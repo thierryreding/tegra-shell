@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module name="KFUSE">
+	<register name="KFUSE_STATE" offset="0x80">
+		<field name="SOFTRESET" offset="31" width="1"/>
+		<field name="STOP" offset="25" width="1"/>
+		<field name="RESTART" offset="24" width="1"/>
+		<field name="CRCPASS" offset="17" width="1"/>
+		<field name="DONE" offset="16" width="1"/>
+		<field name="ERRBLOCK" offset="8" width="6"/>
+		<field name="CURBLOCK" offset="0" width="6"/>
+	</register>
+	<register name="KFUSE_ERRCOUNT" offset="0x84">
+		<field name="ERR_FATAL" offset="24" width="7"/>
+		<field name="ERR_3" offset="16" width="7"/>
+		<field name="ERR_2" offset="8" width="7"/>
+		<field name="ERR_1" offset="0" width="7"/>
+	</register>
+	<register name="KFUSE_KEYADDR" offset="0x88">
+		<field name="AUTOINC" offset="16" width="1"/>
+		<field name="ADDR" offset="0" width="8"/>
+	</register>
+	<register name="KFUSE_KEYS" offset="0x8c">
+		<field name="DATA" offset="0" width="32"/>
+	</register>
+</module>
