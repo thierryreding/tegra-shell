@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module name="CLKRST">
+	<register name="CLK_RST_CONTROLLER_PLLDP_BASE" offset="0x590">
+		<field name="BYPASS" offset="31" width="1"/>
+		<field name="ENABLE" offset="30" width="1"/>
+		<field name="REF_DIS" offset="29" width="1"/>
+		<field name="FREQLOCK" offset="28" width="1"/>
+		<field name="LOCK" offset="27" width="1"/>
+		<field name="REF_SRC_SEL" offset="25" width="2"/>
+		<field name="LOCK_OVERRIDE" offset="24" width="1"/>
+		<field name="PDIV" offset="19" width="5"/>
+		<field name="IDDQ" offset="18" width="1"/>
+		<field name="PTS" offset="16" width="1"/>
+		<field name="NDIV" offset="8" width="8"/>
+		<field name="MDIV" offset="0" width="8"/>
+	</register>
+
+	<register name="CLK_RST_CONTROLLER_PLLDP_MISC" offset="0x594">
+		<field name="EN_LCKDET" offset="30" width="1"/>
+		<field name="KCP" offset="25" width="2"/>
+		<field name="KVCO" offset="24" width="1"/>
+		<field name="SETUP" offset="0" width="24"/>
+	</register>
+
+	<register name="CLK_RST_CONTROLLER_PLLDP_SS_CFG" offset="0x598">
+		<field name="EN_SDM" offset="31" width="1"/>
+		<field name="EN_SSC" offset="30" width="1"/>
+		<field name="EN_DITHER2" offset="29" width="1"/>
+		<field name="EN_DITHER" offset="28" width="1"/>
+		<field name="SDM_RESET" offset="27" width="1"/>
+		<field name="SDM_TEST_OUT" offset="23" width="3"/>
+	</register>
+
+	<register name="CLK_RST_CONTROLLER_PLLDP_SS_CTRL1" offset="0x59c">
+		<field name="SDM_SSC_MAX" offset="16" width="16"/>
+		<field name="SDM_SSC_MIN" offset="0" width="16"/>
+	</register>
+
+	<register name="CLK_RST_CONTROLLER_PLLDP_SS_CTRL2" offset="0x5a0">
+		<field name="SDM_SSC_STEP" offset="16" width="16"/>
+		<field name="SDM_DIN" offset="0" width="16"/>
+	</register>
+</module>
