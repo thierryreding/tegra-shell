@@ -7,7 +7,7 @@ objs = main.o chip.o
 tegra-shell: $(objs)
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
 
-$(objs): %.o: %.c
+$(objs): %.o: %.c Makefile
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:

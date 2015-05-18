@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<module name="SOR1">
+<module name="SOR1" base="0x54580000">
 	<register name="SOR_XBAR_CTRL" offset="0x4a">
 		<field name="LINK1_XSEL_4" offset="29" width="3"/>
 		<field name="LINK1_XSEL_3" offset="26" width="3"/>

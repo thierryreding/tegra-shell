@@ -78,6 +78,9 @@ int __tegra_shell_module_parse(struct tegra_shell_module *module, xmlNode *root)
 
 		if (xmlStrcmp(prop->name, (xmlChar *)"name") == 0)
 			module->name = strdup(value);
+
+		if (xmlStrcmp(prop->name, (xmlChar *)"base") == 0)
+			module->base = strtoul(value, NULL, 0);
 	}
 
 	for (node = root->children; node; node = node->next) {

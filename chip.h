@@ -16,6 +16,7 @@ struct tegra_shell_register {
 
 struct tegra_shell_module {
 	const char *name;
+	unsigned long base;
 	struct tegra_shell_register *registers;
 	unsigned int num_registers;
 };

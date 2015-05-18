@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module name="APB_MISC" base="0x70000000">
+	<register name="GP_HIDREV" offset="0x804">
+		<field name="MINORREV" offset="16" width="4"/>
+		<field name="CHIPID" offset="8" width="8"/>
+		<field name="MAJORREV" offset="4" width="4"/>
+		<field name="HIDFAM" offset="0" width="4"/>
+	</register>
+</module>

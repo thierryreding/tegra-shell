@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<module name="CLKRST">
+<module name="CLKRST" base="0x60006000">
 	<register name="CLK_RST_CONTROLLER_PLLDP_BASE" offset="0x590">
 		<field name="BYPASS" offset="31" width="1"/>
 		<field name="ENABLE" offset="30" width="1"/>

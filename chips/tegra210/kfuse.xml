@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<module name="KFUSE">
+<module name="KFUSE" base="0x7000fc00">
 	<register name="KFUSE_STATE" offset="0x80">
 		<field name="SOFTRESET" offset="31" width="1"/>
 		<field name="STOP" offset="25" width="1"/>
