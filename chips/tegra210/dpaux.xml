@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module name="DPAUX" base="0x54040000">
+	<register name="DPAUX_CTXSW" offset="0x000">
+		<field name="NEXT_CHANNEL" offset="28" width="4"/>
+		<field name="NEXT_CLASS" offset="16" width="10"/>
+		<field name="CURR_CHANNEL" offset="12" width="4"/>
+		<field name="AUTO_ACK" offset="11" width="1"/>
+		<field name="CURR_CLASS" offset="0" width="10"/>
+	</register>
+
+	<register name="DPAUX_INTR_EN_AUX" offset="0x004">
+		<field name="AUX_DONE" offset="3" width="1"/>
+		<field name="IRQ_EVENT" offset="2" width="1"/>
+		<field name="UNPLUG_EVENT" offset="1" width="1"/>
+		<field name="PLUG_EVENT" offset="0" width="1"/>
+	</register>
+
+	<register name="DPAUX_INTR_AUX" offset="0x014">
+		<field name="AUX_DONE" offset="3" width="1"/>
+		<field name="IRQ_EVENT" offset="2" width="1"/>
+		<field name="UNPLUG_EVENT" offset="1" width="1"/>
+		<field name="PLUG_EVENT" offset="0" width="1"/>
+	</register>
+
+	<register name="DPAUX_HPD_CONFIG" offset="0x0f4">
+		<field name="UNPLUG_MIN_TIME" offset="16" width="16"/>
+		<field name="PLUG_MIN_TIME" offset="0" width="16"/>
+	</register>
+
+	<register name="DPAUX_HPD_IRQ_CONFIG" offset="0x104">
+		<field name="MIN_LOW_TIME" offset="0" width="16"/>
+	</register>
+
+	<register name="DPAUX_DP_AUX_CONFIG" offset="0x114">
+		<field name="TIMEOUT" offset="0" width="16"/>
+	</register>
+
+	<register name="DPAUX_HYBRID_PADCTL" offset="0x124">
+		<field name="I2C_SDA_INPUT_RCV" offset="15" width="1"/>
+		<field name="I2C_SCL_INPUT_RCV" offset="14" width="1"/>
+		<field name="AUX_CMH" offset="12" width="2"/>
+		<field name="AUX_DRVZ" offset="8" width="3"/>
+		<field name="AUX_DRVI" offset="2" width="6"/>
+		<field name="AUX_INPUT_RCV" offset="1" width="1"/>
+		<field name="MODE" offset="0" width="1"/>
+	</register>
+
+	<register name="DPAUX_HYBRID_SPARE" offset="0x134">
+		<field name="PAD_PWR" offset="0" width="1"/>
+	</register>
+
+	<register name="DPAUX_SCRATCH_REG0" offset="0x144"/>
+	<register name="DPAUX_SCRATCH_REG1" offset="0x154"/>
+	<register name="DPAUX_SCRATCH_REG2" offset="0x164"/>
+</module>
