@@ -1,5 +1,6 @@
 #include <errno.h>
 #include <fcntl.h>
+#include <fnmatch.h>
 #include <getopt.h>
 #include <stdbool.h>
 #include <stdint.h>
@@ -46,7 +47,7 @@ static int exec_decode(struct cli_options *options, int argc, char *argv[])
 	printf("%s (%lx)\n", module->name, module->base);
 	*/
 
-	if (argc > 2) {
+	if (argc > 2 && strchr(argv[2], '*') == NULL) {
 		struct tegra_shell_register *reg;
 		unsigned int index;
 
@@ -67,6 +68,9 @@ static int exec_decode(struct cli_options *options, int argc, char *argv[])
 
 		for (i = 0; i < module->num_registers; i++) {
 			reg = &module->registers[i];
+
+			if (argc > 2 && fnmatch(argv[2], reg->name, 0) != 0)
+				continue;
 
 			for (j = 0; j < reg->count; j++) {
 				tegra_shell_register_describe(reg, j);
@@ -113,7 +117,7 @@ static int exec_read(struct cli_options *options, int argc, char *argv[])
 		goto close;
 	}
 
-	if (argc > 2) {
+	if (argc > 2 && strchr(argv[2], '*') == NULL) {
 		struct tegra_shell_register *reg;
 		unsigned int index;
 
@@ -131,6 +135,9 @@ static int exec_read(struct cli_options *options, int argc, char *argv[])
 
 		for (i = 0; i < module->num_registers; i++) {
 			reg = &module->registers[i];
+
+			if (argc > 2 && fnmatch(argv[2], reg->name, 0) != 0)
+				continue;
 
 			for (j = 0; j < reg->count; j++) {
 				value = *(uint32_t *)(base + reg->offset + j * 4);
