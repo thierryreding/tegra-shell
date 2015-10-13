@@ -1,6 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <module name="CLKRST" base="0x60006000">
+	<register name="PLLE_SS_CNTL" offset="0x068">
+		<field name="INTEGOFFSET" offset="30" width="2"/>
+		<field name="SSCINCINTRV" offset="24" width="6"/>
+		<field name="SSCINC" offset="16" width="8"/>
+		<field name="SSCINVERT" offset="15" width="1"/>
+		<field name="SSCCENTER" offset="14" width="1"/>
+		<field name="SSCPDMBYP" offset="13" width="1"/>
+		<field name="SSCBYP" offset="12" width="1"/>
+		<field name="INTERP_RESET" offset="11" width="1"/>
+		<field name="BYPASS_SS" offset="10" width="1"/>
+		<field name="SSCMAX" offset="0" width="9"/>
+	</register>
+
+	<register name="PLLE_MISC1" offset="0x06c">
+		<field name="SDM_RESET" offset="4" width="1"/>
+		<field name="EN_DITHER2" offset="3" width="1"/>
+		<field name="EN_DITHER" offset="2" width="1"/>
+		<field name="EN_SSC" offset="1" width="1"/>
+		<field name="EN_SDM" offset="0" width="1"/>
+	</register>
+
+	<register name="PLLP_BASE" offset="0x0a0">
+		<field name="BYPASS" offset="31" width="1"/>
+		<field name="ENABLE" offset="30" width="1"/>
+		<field name="REF_DIS" offset="29" width="1"/>
+		<field name="BASE_OVERRIDE" offset="28" width="1"/>
+		<field name="LOCK" offset="27" width="1"/>
+		<field name="DIVP" offset="20" width="5"/>
+		<field name="DIVN" offset="10" width="8"/>
+		<field name="DIVP" offset="0" width="8"/>
+	</register>
+
+	<register name="PLLP_OUTA" offset="0x0a4">
+		<field name="OUT1_RATIO" offset="8" width="8"/>
+		<field name="OUT1_OVERRIDE" offset="2" width="1"/>
+		<field name="OUT1_CLKEN" offset="1" width="1"/>
+		<field name="OUT1_RSTN" offset="0" width="1"/>
+	</register>
+
+	<register name="PLLP_OUTB" offset="0x0a8">
+		<field name="OUT4_RATIO" offset="24" width="8"/>
+		<field name="OUT4_OVERRIDE" offset="18" width="1"/>
+		<field name="OUT4_CLKEN" offset="17" width="1"/>
+		<field name="OUT4_RSTN" offset="16" width="1"/>
+		<field name="OUT3_RATIO" offset="8" width="8"/>
+		<field name="OUT3_OVERRIDE" offset="2" width="1"/>
+		<field name="OUT3_CLKEN" offset="1" width="1"/>
+		<field name="OUT3_RSTN" offset="0" width="1"/>
+	</register>
+
+	<register name="PLLP_MISC" offset="0x0ac">
+		<field name="OUT4_DIV_BYP" offset="27" width="1"/>
+		<field name="OUT3_DIV_BYP" offset="26" width="1"/>
+		<field name="OUT1_DIV_BYP" offset="24" width="1"/>
+		<field name="PTS" offset="22" width="2"/>
+		<field name="EN_LCKDET" offset="18" width="1"/>
+		<field name="LOCK_OVERRIDE" offset="17" width="1"/>
+		<field name="FREQLOCK" offset="4" width="1"/>
+		<field name="IDDQ" offset="3" width="1"/>
+		<field name="KVCO" offset="2" width="1"/>
+		<field name="KCP" offset="0" width="2"/>
+	</register>
+
+	<register name="PLLU_BASE" offset="0x0c0">
+		<field name="BYPASS" offset="31" width="1"/>
+		<field name="ENABLE" offset="30" width="1"/>
+		<field name="REF_DIS" offset="29" width="1"/>
+		<field name="LOCK" offset="27" width="1"/>
+		<field name="CLKENABLE_48M" offset="25" width="1"/>
+		<field name="OVERRIDE" offset="24" width="1"/>
+		<field name="CLKENABLE_ICUSB" offset="23" width="1"/>
+		<field name="CLKENABLE_HSIC" offset="22" width="1"/>
+		<field name="CLKENABLE_USB" offset="21" width="1"/>
+		<field name="DIVP" offset="16" width="5"/>
+		<field name="DIVN" offset="8" width="8"/>
+		<field name="DIVM" offset="0" width="8"/>
+	</register>
+
+	<register name="PLLU_OUTA" offset="0x0c4">
+		<field name="OUT2_RATIO" offset="24" width="8"/>
+		<field name="OUT2_OVRRIDE" offset="18" width="1"/>
+		<field name="OUT2_CLKEN" offset="17" width="1"/>
+		<field name="OUT2_RSTN" offset="16" width="1"/>
+		<field name="OUT1_RATIO" offset="8" width="8"/>
+		<field name="OUT1_OVRRIDE" offset="2" width="1"/>
+		<field name="OUT1_CLKEN" offset="1" width="1"/>
+		<field name="OUT1_RSTN" offset="0" width="1"/>
+	</register>
+
+	<register name="PLLU_MISC1" offset="0x0c8">
+		<field name="OUT2_DIV_BYP" offset="2" width="1"/>
+		<field name="OUT1_DIV_BYP" offset="1" width="1"/>
+		<field name="LOCK_OVERRIDE" offset="0" width="1"/>
+	</register>
+
+	<register name="PLLU_MISC" offset="0x0cc">
+		<field name="IDDQ" offset="31" width="1"/>
+		<field name="FREQLOCK" offset="30" width="1"/>
+		<field name="EN_LCKDET" offset="29" width="1"/>
+		<field name="PTS" offset="27" width="2"/>
+		<field name="KCP" offset="25" width="2"/>
+		<field name="KVCO" offset="24" width="1"/>
+		<field name="SETUP" offset="0" width="24"/>
+	</register>
+
+	<register name="PLLE_BASE" offset="0x0e8">
+		<field name="ENABLE" offset="31" width="1"/>
+		<field name="LOCK_OVERRIDE" offset="30" width="1"/>
+		<field name="FDIV4B" offset="29" width="1"/>
+		<field name="PLDIV_CML" offset="24" width="5"/>
+		<field name="EXT_SETUP" offset="16" width="8"/>
+		<field name="NDIV" offset="8" width="8"/>
+		<field name="MDIV" offset="0" width="8"/>
+	</register>
+
+	<register name="PLLE_MISC" offset="0x0ec">
+		<field name="SETUP" offset="16" width="16"/>
+		<field name="CLKENABLE" offset="15" width="1"/>
+		<field name="IDDQ_SWCTL" offset="14" width="1"/>
+		<field name="IDDQ_OVERRIDE_VALUE" offset="13" width="1"/>
+		<field name="FREQLOCK" offset="12" width="1"/>
+		<field name="LOCK" offset="11" width="1"/>
+		<field name="REF_DIS" offset="10" width="1"/>
+		<field name="LOCK_ENABLE" offset="9" width="1"/>
+		<field name="PTS" offset="8" width="1"/>
+		<field name="KCP" offset="6" width="2"/>
+		<field name="VREG_BG_CTRL" offset="4" width="2"/>
+		<field name="VREG_CTRL" offset="2" width="2"/>
+		<field name="KVCO" offset="0" width="1"/>
+	</register>
+
+	<register name="PLLE_SS_CNTL1" offset="0x0f0">
+		<field name="PLLE_SDM_DIN" offset="16" width="16"/>
+		<field name="PLLE_SDM_SSC_STEP" offset="0" width="16"/>
+	</register>
+
+	<register name="PLLE_SS_CNTL2" offset="0x0f4">
+		<field name="PLLE_SDM_SSC_MAX" offset="16" width="16"/>
+		<field name="PLLE_SDM_SSC_MIN" offset="0" width="16"/>
+	</register>
+
 	<register name="CLK_OUT_ENB_X" offset="0x280">
 		<field name="PLLG_REF" offset="29" width="1"/>
 		<field name="PLLA_ADSP" offset="28" width="1"/>
@@ -134,6 +275,24 @@
 		<field name="FORCE_PD_SAMP_A_POWERDOWN" offset="0" width="1"/>
 	</register>
 
+	<register name="PLLE_AUX" offset="0x48c">
+		<field name="SS_SEQ_INCLUDE" offset="31" width="1"/>
+		<field name="REF_SEL_PLLREFE" offset="28" width="1"/>
+		<field name="SEQ_STATE" offset="26" width="2"/>
+		<field name="SEQ_START_STATE" offset="25" width="1"/>
+		<field name="SEQ_ENABLE" offset="24" width="1"/>
+		<field name="SS_DLY" offset="16" width="8"/>
+		<field name="LOCK_DLY" offset="8" width="8"/>
+		<field name="TEST_FAST_PT" offset="7" width="1"/>
+		<field name="SS_SWCTL" offset="6" width="1"/>
+		<field name="CONFIG_SWCTL" offset="5" width="1"/>
+		<field name="ENABLE_SWCTL" offset="4" width="1"/>
+		<field name="USE_LOCKDET" offset="3" width="1"/>
+		<field name="REF_SRC" offset="2" width="1"/>
+		<field name="CML1_OEN" offset="1" width="1"/>
+		<field name="CML0_OEN" offset="0" width="1"/>
+	</register>
+
 	<register name="PLLD2_BASE" offset="0x4b8">
 		<field name="BYPASS" offset="31" width="1"/>
 		<field name="ENABLE" offset="30" width="1"/>
@@ -154,6 +313,89 @@
 		<field name="KCP" offset="25" width="2"/>
 		<field name="KVCO" offset="24" width="1"/>
 		<field name="SETUP" offset="0" width="24"/>
+	</register>
+
+	<register name="UTMIP_PLL_CFG3" offset="0x4c0">
+		<field name="REF_SRC_SEL" offset="26" width="1"/>
+		<field name="REF_DIS" offset="25" width="1"/>
+		<field name="PTS" offset="24" width="1"/>
+		<field name="SETUP" offset="0" width="24"/>
+	</register>
+
+	<register name="PLLREFE_BASE" offset="0x4c4">
+		<field name="BYPASS" offset="31" width="1"/>
+		<field name="ENABLE" offset="30" width="1"/>
+		<field name="REF_DIS" offset="29" width="1"/>
+		<field name="KCP" offset="27" width="2"/>
+		<field name="KVCO" offset="26" width="1"/>
+		<field name="DIVP" offset="16" width="5"/>
+		<field name="DIVN" offset="8" width="8"/>
+		<field name="DIVM" offset="0" width="8"/>
+	</register>
+
+	<register name="PLLREFE_MISC" offset="0x4c8">
+		<field name="EN_LCKDET" offset="30" width="1"/>
+		<field name="LOCK_OVERRIDE" offset="29" width="1"/>
+		<field name="FREQLOCK" offset="28" width="1"/>
+		<field name="LOCK" offset="27" width="1"/>
+		<field name="PTS" offset="25" width="2"/>
+		<field name="IDDQ" offset="24" width="1"/>
+		<field name="SETUP" offset="0" width="24"/>
+	</register>
+
+	<register name="PLLREFE_OUT" offset="0x4cc">
+		<field name="OUT2_CLKEN" offset="17" width="1"/>
+		<field name="OUT1_DIV_BYP" offset="16" width="1"/>
+		<field name="OUT1_RATIO" offset="8" width="8"/>
+		<field name="OUT1_CLKEN" offset="1" width="1"/>
+		<field name="OUT1_RSTN" offset="0" width="1"/>
+	</register>
+
+	<register name="XUSBIO_PLL_CFG0" offset="0x51c">
+	</register>
+
+	<register name="XUSBIO_PLL_CFG1" offset="0x520">
+	</register>
+
+	<register name="PLLE_AUX1" offset="0x524">
+		<field name="INTRESET_DLY" offset="8" width="8"/>
+		<field name="ENABLE_DLY" offset="0" width="8"/>
+	</register>
+
+	<register name="UTMIPLL_HW_PWRDN_CFG0" offset="0x52c">
+		<field name="LOCK" offset="31" width="1"/>
+		<field name="SEQ_STATE" offset="26" width="2"/>
+		<field name="SEQ_START_STATE" offset="25" width="1"/>
+		<field name="SEQ_ENABLE" offset="24" width="1"/>
+		<field name="IDDQ_PD_INCLUDE" offset="7" width="1"/>
+		<field name="USE_LOCKDET" offset="6" width="1"/>
+		<field name="SEQ_RESET_INPUT_VALUE" offset="5" width="1"/>
+		<field name="SEQ_IN_SWCTL" offset="4" width="1"/>
+		<field name="CLK_ENABLE_OVERRIDE_VALUE" offset="3" width="1"/>
+		<field name="CLK_ENABLE_SWCTL" offset="2" width="1"/>
+		<field name="IDDQ_OVERRIDE_VALUE" offset="1" width="1"/>
+		<field name="IDDQ_SWCTL" offset="0" width="1"/>
+	</register>
+
+	<register name="PLLU_HW_PWRDN_CFG0" offset="0x530">
+		<field name="IDDQ_PD_INCLUDE" offset="28" width="1"/>
+		<field name="SEQ_STATE" offset="26" width="2"/>
+		<field name="SEQ_START_STATE" offset="25" width="1"/>
+		<field name="SEQ_ENABLE" offset="24" width="1"/>
+		<field name="USE_SWITCH_DETECT" offset="7" width="1"/>
+		<field name="USE_LOCKDET" offset="6" width="1"/>
+		<field name="SEQ_RESET_INPUT_VALUE" offset="5" width="1"/>
+		<field name="SEQ_IN_SWCTL" offset="4" width="1"/>
+		<field name="CLK_ENABLE_OVERRIDE_VALUE" offset="3" width="1"/>
+		<field name="CLK_ENABLE_SWCTL" offset="2" width="1"/>
+		<field name="CLK_SWITCH_SWCTL" offset="0" width="1"/>
+	</register>
+
+	<register name="XUSB_PLL_CFG0" offset="0x534">
+		<field name="PLLU_CLK_SWITCH_DLY" offset="24" width="8"/>
+		<field name="PLLU_LOCK_DLY" offset="14" width="10"/>
+		<field name="UTMIPLL_IDDQ2_ENABLE_DLY" offset="10" width="4"/>
+		<field name="UTMIPLL_LOCK_DLY" offset="0" width="10"/>
 	</register>
 
 	<register name="PLLD2_SS_CFG" offset="0x570">
@@ -244,4 +486,17 @@
 		<field name="CLK_DIVISOR" offset="0" width="8"/>
 	</register>
 
+	<register name="PLLP_OUTC" offset="0x67c">
+		<field name="OUT5_RATIO" offset="24" width="8"/>
+		<field name="OUT5_OVERRIDE" offset="18" width="1"/>
+		<field name="OUT5_CLKEN" offset="17" width="1"/>
+		<field name="OUT5_RSTN" offset="16" width="1"/>
+	</register>
+
+	<register name="PLLP_MISC1" offset="0x680">
+		<field name="OUT5_DIV_BYP" offset="30" width="1"/>
+		<field name="HSIO_CLK_EN" offset="29" width="1"/>
+		<field name="XUSB_CLK_EN" offset="28" width="1"/>
+		<field name="SETUP" offset="0" width="24"/>
+	</register>
 </module>
