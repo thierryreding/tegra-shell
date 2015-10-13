@@ -687,12 +687,29 @@
 	</register>
 
 	<register name="UPHY_PLL_S0_CTL_2" offset="0x864">
+		<field name="PLL0_CAL_CTRL" offset="4" width="24"/>
+		<field name="PLL0_CAL_RESET" offset="3" width="1"/>
+		<field name="PLL0_CAL_OVRD" offset="2" width="1"/>
+		<field name="PLL0_CAL_DONE" offset="1" width="1"/>
+		<field name="PLL0_CAL_EN" offset="0" width="1"/>
 	</register>
 
 	<register name="UPHY_PLL_S0_CTL_3" offset="0x868">
+		<field name="PLL0_LOCKDET_CTRL" offset="4" width="24"/>
+		<field name="PLL0_LOCKDET_RESET" offset="0" width="1"/>
 	</register>
 
 	<register name="UPHY_PLL_S0_CTL_4" offset="0x86c">
+		<field name="PLL0_TCLKOUT_EN" offset="28" width="1"/>
+		<field name="PLL0_CLKDIST_CTRL" offset="20" width="4"/>
+		<field name="PLL0_XDIGCLK_EN" offset="19" width="1"/>
+		<field name="PLL0_XDIGCLK_SEL" offset="16" width="3"/>
+		<field name="PLL0_TXCLKREF_EN" offset="15" width="1"/>
+		<field name="PLL0_TXCLKREF_SEL" offset="12" width="2"/>
+		<field name="PLL0_FBCLKBUF_EN" offset="9" width="1"/>
+		<field name="PLL0_REFCLKBUF_EN" offset="8" width="1"/>
+		<field name="PLL0_REFCLK_SEL" offset="4" width="4"/>
+		<field name="PLL0_REFCLK_TERM100" offset="0" width="1"/>
 	</register>
 
 	<register name="UPHY_PLL_S0_CTL_5" offset="0x870">

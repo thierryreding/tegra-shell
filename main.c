@@ -42,28 +42,36 @@ static int exec_decode(struct cli_options *options, int argc, char *argv[])
 	if (!module)
 		return -ENOENT;
 
+	/*
 	printf("%s (%lx)\n", module->name, module->base);
+	*/
 
 	if (argc > 2) {
 		struct tegra_shell_register *reg;
+		unsigned int index;
 
-		reg = tegra_shell_module_find_register(module, argv[2]);
+		reg = tegra_shell_module_find_register(module, argv[2], &index);
 		if (!reg)
 			return -ENOENT;
 
 		if (argc > 3) {
 			value = strtoul(argv[3], NULL, 0);
 
-			tegra_shell_register_decode(reg, value);
+			tegra_shell_register_decode(reg, index, value);
 		} else {
-			tegra_shell_register_describe(reg);
+			tegra_shell_register_describe(reg, index);
 		}
 	} else {
-		unsigned int i;
+		struct tegra_shell_register *reg;
+		unsigned int i, j;
 
 		for (i = 0; i < module->num_registers; i++) {
-			tegra_shell_register_describe(&module->registers[i]);
-			printf("\n");
+			reg = &module->registers[i];
+
+			for (j = 0; j < reg->count; j++) {
+				tegra_shell_register_describe(reg, j);
+				printf("\n");
+			}
 		}
 	}
 
@@ -107,22 +115,28 @@ static int exec_read(struct cli_options *options, int argc, char *argv[])
 
 	if (argc > 2) {
 		struct tegra_shell_register *reg;
+		unsigned int index;
 
-		reg = tegra_shell_module_find_register(module, argv[2]);
+		reg = tegra_shell_module_find_register(module, argv[2], &index);
 		if (!reg) {
 			err = -ENOENT;
 			goto unmap;
 		}
 
-		value = *(uint32_t *)(base + reg->offset);
-		tegra_shell_register_decode(reg, value);
+		value = *(uint32_t *)(base + reg->offset + index * 4);
+		tegra_shell_register_decode(reg, index, value);
 	} else {
-		unsigned int i;
+		struct tegra_shell_register *reg;
+		unsigned int i, j;
 
 		for (i = 0; i < module->num_registers; i++) {
-			value = *(uint32_t *)(base + module->registers[i].offset);
-			tegra_shell_register_decode(&module->registers[i], value);
-			printf("\n");
+			reg = &module->registers[i];
+
+			for (j = 0; j < reg->count; j++) {
+				value = *(uint32_t *)(base + reg->offset + j * 4);
+				tegra_shell_register_decode(reg, j, value);
+				printf("\n");
+			}
 		}
 	}
 
@@ -209,11 +223,11 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
-	printf("chip: %s\n", options.chip);
-
 	err = command->exec(&options, argc - args, argv + args);
 	if (err < 0) {
+		/*
 		fprintf(stderr, "command %s failed: %d\n", command->name, err);
+		*/
 		return 1;
 	}
 

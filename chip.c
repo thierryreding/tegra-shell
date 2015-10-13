@@ -36,6 +36,8 @@ int tegra_shell_parse_register(struct tegra_shell_register *reg, xmlNode *root)
 	xmlAttr *prop;
 	xmlNode *node;
 
+	reg->count = 1;
+
 	for (prop = root->properties; prop; prop = prop->next) {
 		char *value = (char *)xmlGetProp(root, prop->name);
 
@@ -44,6 +46,9 @@ int tegra_shell_parse_register(struct tegra_shell_register *reg, xmlNode *root)
 
 		if (xmlStrcmp(prop->name, (xmlChar *)"offset") == 0)
 			reg->offset = strtoul(value, NULL, 0);
+
+		if (xmlStrcmp(prop->name, (xmlChar *)"count") == 0)
+			reg->count = strtoul(value, NULL, 0);
 	}
 
 	for (node = root->children; node; node = node->next) {
@@ -142,12 +147,16 @@ static int tegra_shell_module_load(struct tegra_shell_module *module,
 }
 
 void tegra_shell_register_decode(struct tegra_shell_register *reg,
-				 unsigned long value)
+				 unsigned int index, unsigned long value)
 {
 	struct tegra_shell_register_field *field;
 	unsigned int i, width = 0;
 
-	printf("%s (%08x) = %08lx\n", reg->name, reg->offset, value);
+	if (reg->count > 1)
+		printf("%s(%u) (%08x) = %08lx\n", reg->name, index,
+		       reg->offset + index * 4, value);
+	else
+		printf("%s (%08x) = %08lx\n", reg->name, reg->offset, value);
 
 	for (i = 0; i < reg->num_fields; i++) {
 		int len = strlen(reg->fields[i].name);
@@ -170,12 +179,17 @@ void tegra_shell_register_decode(struct tegra_shell_register *reg,
 	}
 }
 
-void tegra_shell_register_describe(struct tegra_shell_register *reg)
+void tegra_shell_register_describe(struct tegra_shell_register *reg,
+				   unsigned int index)
 {
 	struct tegra_shell_register_field *field;
 	unsigned int i, width = 0;
 
-	printf("%s (%08x)\n", reg->name, reg->offset);
+	if (reg->count > 1)
+		printf("%s(%u) (%08x)\n", reg->name, index,
+		       reg->offset + index * 4);
+	else
+		printf("%s (%08x)\n", reg->name, reg->offset);
 
 	for (i = 0; i < reg->num_fields; i++) {
 		int len = strlen(reg->fields[i].name);
@@ -197,13 +211,28 @@ void tegra_shell_register_describe(struct tegra_shell_register *reg)
 
 struct tegra_shell_register *
 tegra_shell_module_find_register(struct tegra_shell_module *module,
-				 const char *name)
+				 const char *name, unsigned int *index)
 {
+	int len = strlen(name);
 	unsigned int i;
+	char *parens;
 
-	for (i = 0; i < module->num_registers; i++)
-		if (strcmp(name, module->registers[i].name) == 0)
-			return &module->registers[i];
+	parens = strchr(name, '(');
+	if (parens) {
+		len = parens - name;
+		if (index)
+			*index = strtoul(parens + 1, NULL, 0);
+	}
+
+	for (i = 0; i < module->num_registers; i++) {
+		if (parens) {
+			if (strncmp(name, module->registers[i].name, len) == 0)
+				return &module->registers[i];
+		} else {
+			if (strcmp(name, module->registers[i].name) == 0)
+				return &module->registers[i];
+		}
+	}
 
 	return NULL;
 }

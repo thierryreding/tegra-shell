@@ -97,6 +97,43 @@
 		<field name="SOR1_CLK_DIVISOR" offset="0" width="8"/>
 	</register>
 
+	<register name="UTMIP_PLL_CFG0" offset="0x480">
+		<field name="VREG_CTRL" offset="27" width="2"/>
+		<field name="KCP" offset="25" width="2"/>
+		<field name="KVCO" offset="24" width="1"/>
+		<field name="NDIV" offset="16" width="8"/>
+		<field name="MDIV" offset="8" width="8"/>
+		<field name="LOCK_OVR" offset="2" width="1"/>
+		<field name="EN_LCKDET" offset="0" width="1"/>
+	</register>
+
+	<register name="UTMIP_PLL_CFG1" offset="0x484">
+		<field name="PLLU_ENABLE_DLY_COUNT" offset="27" width="5"/>
+		<field name="RSVD" offset="18" width="9"/>
+		<field name="FORCE_PLLU_POWERUP" offset="17" width="1"/>
+		<field name="FORCE_PLLU_POWERDOWN" offset="16" width="1"/>
+		<field name="FORCE_PLL_ENABLE_POWERUP" offset="15" width="1"/>
+		<field name="FORCE_PLL_ENABLE_POWERDOWN" offset="14" width="1"/>
+		<field name="FORCE_PLL_ACTIVE_POWERUP" offset="13" width="1"/>
+		<field name="FORCE_PLL_ACTIVE_POWERDOWN" offset="12" width="1"/>
+		<field name="XTAL_FREQ_COUNT" offset="0" width="12"/>
+	</register>
+
+	<register name="UTMIP_PLL_CFG2" offset="0x488">
+		<field name="PHY_XTAL_CLOCKEN" offset="30" width="1"/>
+		<field name="FORCE_PD_RESERVED" offset="26" width="4"/>
+		<field name="FORCE_PD_SAMP_D_POWERUP" offset="25" width="1"/>
+		<field name="FORCE_PD_SAMP_D_POWERDOWN" offset="24" width="1"/>
+		<field name="PLL_ACTIVE_DLY_COUNT" offset="18" width="6"/>
+		<field name="PLLU_STABLE_COUNT" offset="6" width="12"/>
+		<field name="FORCE_PD_SAMP_C_POWERUP" offset="5" width="1"/>
+		<field name="FORCE_PD_SAMP_C_POWERDOWN" offset="4" width="1"/>
+		<field name="FORCE_PD_SAMP_B_POWERUP" offset="3" width="1"/>
+		<field name="FORCE_PD_SAMP_B_POWERDOWN" offset="2" width="1"/>
+		<field name="FORCE_PD_SAMP_A_POWERUP" offset="1" width="1"/>
+		<field name="FORCE_PD_SAMP_A_POWERDOWN" offset="0" width="1"/>
+	</register>
+
 	<register name="PLLD2_BASE" offset="0x4b8">
 		<field name="BYPASS" offset="31" width="1"/>
 		<field name="ENABLE" offset="30" width="1"/>
@@ -178,4 +215,33 @@
 		<field name="SDM_SSC_STEP" offset="16" width="16"/>
 		<field name="SDM_DIN" offset="0" width="16"/>
 	</register>
+
+	<register name="CLK_SOURCE_XUSB_CORE_HOST" offset="0x600">
+		<field name="CLK_SRC" offset="29" width="3"/>
+		<field name="CLK_DIVISOR" offset="0" width="8"/>
+	</register>
+
+	<register name="CLK_SOURCE_XUSB_FALCON" offset="0x604">
+		<field name="CLK_SRC" offset="29" width="3"/>
+		<field name="CLK_DIVISOR" offset="0" width="8"/>
+	</register>
+
+	<register name="CLK_SOURCE_XUSB_FS" offset="0x608">
+		<field name="CLK_SRC" offset="29" width="3"/>
+		<field name="CLK_DIVISOR" offset="0" width="8"/>
+	</register>
+
+	<register name="CLK_SOURCE_XUSB_CORE_DEV" offset="0x60c">
+		<field name="CLK_SRC" offset="29" width="3"/>
+		<field name="CLK_DIVISOR" offset="0" width="8"/>
+	</register>
+
+	<register name="CLK_SOURCE_XUSB_SS" offset="0x610">
+		<field name="CLK_SRC" offset="29" width="3"/>
+		<field name="HS_HSICP_CLK_SEL" offset="26" width="1"/>
+		<field name="HS_CLK_BYPASS_SWITCH" offset="25" width="1"/>
+		<field name="SS_CLK_BYPASS_SWITCH" offset="24" width="1"/>
+		<field name="CLK_DIVISOR" offset="0" width="8"/>
+	</register>
+
 </module>
