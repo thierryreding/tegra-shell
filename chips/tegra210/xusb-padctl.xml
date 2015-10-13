@@ -1,0 +1,832 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module name="XUSB_PADCTL" base="0x70098000">
+	<register name="BOOT_MEDIA" offset="0x000">
+		<field name="BOOT_PORT" offset="1" width="4"/>
+		<field name="BOOT_MEDIA_ENABLE" offset="0" width="1"/>
+	</register>
+
+	<register name="USB2_PAD_MUX" offset="0x004">
+		<field name="HSIC_PORT1_CONFIG" offset="21" width="1"/>
+		<field name="HSIC_PORT0_CONFIG" offset="20" width="1"/>
+		<field name="USB2_BIAS_PAD" offset="18" width="2"/>
+		<field name="HSIC_PAD_TRK" offset="16" width="2"/>
+		<field name="USB2_HSIC_PAD_PORT1" offset="15" width="1"/>
+		<field name="USB2_HSIC_PAD_PORT0" offset="14" width="1"/>
+		<field name="USB2_OTG_PAD_PORT3" offset="6" width="2"/>
+		<field name="USB2_OTG_PAD_PORT2" offset="4" width="2"/>
+		<field name="USB2_OTG_PAD_PORT1" offset="2" width="2"/>
+		<field name="USB2_OTG_PAD_PORT0" offset="0" width="2"/>
+	</register>
+
+	<register name="USB2_PORT_CAP" offset="0x008">
+		<field name="PORT3_REVERSE_ID" offset="15" width="1"/>
+		<field name="PORT3_INTERNAL" offset="14" width="1"/>
+		<field name="PORT3_CAP" offset="12" width="2"/>
+		<field name="PORT2_REVERSE_ID" offset="11" width="1"/>
+		<field name="PORT2_INTERNAL" offset="10" width="1"/>
+		<field name="PORT2_CAP" offset="8" width="2"/>
+		<field name="PORT1_REVERSE_ID" offset="7" width="1"/>
+		<field name="PORT1_INTERNAL" offset="6" width="1"/>
+		<field name="PORT1_CAP" offset="4" width="2"/>
+		<field name="PORT0_REVERSE_ID" offset="3" width="1"/>
+		<field name="PORT0_INTERNAL" offset="2" width="1"/>
+		<field name="PORT0_CAP" offset="0" width="2"/>
+	</register>
+
+	<register name="SNPS_OC_MAP" offset="0x00c">
+		<field name="CONTROLLER1_OC_PIN" offset="0" width="4"/>
+	</register>
+
+	<register name="USB2_OC_MAP" offset="0x010">
+		<field name="PORT3_OC_PIN" offset="12" width="4"/>
+		<field name="PORT2_OC_PIN" offset="8" width="4"/>
+		<field name="PORT1_OC_PIN" offset="4" width="4"/>
+		<field name="PORT0_OC_PIN" offset="0" width="4"/>
+	</register>
+
+	<register name="SS_PORT_MAP" offset="0x014">
+		<field name="PORT3_INTERNAL" offset="19" width="1"/>
+		<field name="PORT3_MAP" offset="15" width="4"/>
+		<field name="PORT2_INTERNAL" offset="14" width="1"/>
+		<field name="PORT2_MAP" offset="10" width="4"/>
+		<field name="PORT1_INTERNAL" offset="9" width="1"/>
+		<field name="PORT1_MAP" offset="5" width="4"/>
+		<field name="PORT0_INTERNAL" offset="4" width="1"/>
+		<field name="PORT0_MAP" offset="0" width="4"/>
+	</register>
+
+	<register name="VBUS_OC_MAP" offset="0x018">
+		<field name="VBUS_ENABLE3_OC_MAP" offset="16" width="4"/>
+		<field name="VBUS_ENABLE3" offset="15" width="1"/>
+		<field name="VBUS_ENABLE2_OC_MAP" offset="11" width="4"/>
+		<field name="VBUS_ENABLE2" offset="10" width="1"/>
+		<field name="VBUS_ENABLE1_OC_MAP" offset="6" width="4"/>
+		<field name="VBUS_ENABLE1" offset="5" width="1"/>
+		<field name="VBUS_ENABLE0_OC_MAP" offset="1" width="4"/>
+		<field name="VBUS_ENABLE0" offset="0" width="1"/>
+	</register>
+
+	<register name="OC_DET" offset="0x01c">
+		<field name="OC_DETECTED_INTERRUPT_ENABLE_VBUS_PAD3" offset="27" width="1"/>
+		<field name="OC_DETECTED_INTERRUPT_ENABLE_VBUS_PAD2" offset="26" width="1"/>
+		<field name="OC_DETECTED_INTERRUPT_ENABLE_VBUS_PAD1" offset="25" width="1"/>
+		<field name="OC_DETECTED_INTERRUPT_ENABLE_VBUS_PAD0" offset="24" width="1"/>
+		<field name="OC_DETECTED_INTERRUPT_ENABLE3" offset="23" width="1"/>
+		<field name="OC_DETECTED_INTERRUPT_ENABLE2" offset="22" width="1"/>
+		<field name="OC_DETECTED_INTERRUPT_ENABLE1" offset="21" width="1"/>
+		<field name="OC_DETECTED_INTERRUPT_ENABLE0" offset="20" width="1"/>
+		<field name="OC_DETECTED_VBUS_PAD3" offset="15" width="1"/>
+		<field name="OC_DETECTED_VBUS_PAD2" offset="14" width="1"/>
+		<field name="OC_DETECTED_VBUS_PAD1" offset="13" width="1"/>
+		<field name="OC_DETECTED_VBUS_PAD0" offset="12" width="1"/>
+		<field name="OC_DETECTED_VBUS_PAD0" offset="12" width="1"/>
+		<field name="OC_DETECTED3" offset="11" width="1"/>
+		<field name="OC_DETECTED2" offset="10" width="1"/>
+		<field name="OC_DETECTED1" offset="9" width="1"/>
+		<field name="OC_DETECTED0" offset="8" width="1"/>
+		<field name="SET_OC_DETECTED3" offset="3" width="1"/>
+		<field name="SET_OC_DETECTED2" offset="2" width="1"/>
+		<field name="SET_OC_DETECTED1" offset="1" width="1"/>
+		<field name="SET_OC_DETECTED0" offset="0" width="1"/>
+	</register>
+
+	<register name="ELPG_PROGRAM_0" offset="0x020">
+		<field name="USB2_HSIC_PORT1_WAKEUP_EVENT" offset="31" width="1"/>
+		<field name="USB2_HSIC_PORT0_WAKEUP_EVENT" offset="30" width="1"/>
+		<field name="USB2_HSIC_PORT1_WAKEUP_INTERRUPT_ENABLE" offset="29" width="1"/>
+		<field name="USB2_HSIC_PORT0_WAKEUP_INTERRUPT_ENABLE" offset="28" width="1"/>
+		<field name="SS_PORT3_WAKEUP_EVENT" offset="24" width="1"/>
+		<field name="SS_PORT2_WAKEUP_EVENT" offset="23" width="1"/>
+		<field name="SS_PORT1_WAKEUP_EVENT" offset="22" width="1"/>
+		<field name="SS_PORT0_WAKEUP_EVENT" offset="21" width="1"/>
+		<field name="SS_PORT3_WAKEUP_INTERRUPT_ENABLE" offset="17" width="1"/>
+		<field name="SS_PORT2_WAKEUP_INTERRUPT_ENABLE" offset="16" width="1"/>
+		<field name="SS_PORT1_WAKEUP_INTERRUPT_ENABLE" offset="15" width="1"/>
+		<field name="SS_PORT0_WAKEUP_INTERRUPT_ENABLE" offset="14" width="1"/>
+		<field name="USB2_PORT3_WAKEUP_EVENT" offset="10" width="1"/>
+		<field name="USB2_PORT2_WAKEUP_EVENT" offset="9" width="1"/>
+		<field name="USB2_PORT1_WAKEUP_EVENT" offset="8" width="1"/>
+		<field name="USB2_PORT0_WAKEUP_EVENT" offset="7" width="1"/>
+		<field name="USB2_PORT3_WAKEUP_INTERRUPT_ENABLE" offset="3" width="1"/>
+		<field name="USB2_PORT2_WAKEUP_INTERRUPT_ENABLE" offset="2" width="1"/>
+		<field name="USB2_PORT1_WAKEUP_INTERRUPT_ENABLE" offset="1" width="1"/>
+		<field name="USB2_PORT0_WAKEUP_INTERRUPT_ENABLE" offset="0" width="1"/>
+	</register>
+
+	<register name="ELPG_PROGRAM_1" offset="0x024">
+		<field name="AUX_MUX_LP0_VCORE_DOWN" offset="31" width="1"/>
+		<field name="AUX_MUX_LP0_CLAMP_EN_EARLY" offset="30" width="1"/>
+		<field name="AUX_MUX_LP0_CLAMP_EN" offset="29" width="1"/>
+		<field name="SSP3_ELPG_VCORE_DOWN" offset="11" width="1"/>
+		<field name="SSP3_ELPG_CLAMP_EN_EARLY" offset="10" width="1"/>
+		<field name="SSP3_ELPG_CLAMP_EN" offset="9" width="1"/>
+		<field name="SSP2_ELPG_VCORE_DOWN" offset="8" width="1"/>
+		<field name="SSP2_ELPG_CLAMP_EN_EARLY" offset="7" width="1"/>
+		<field name="SSP2_ELPG_CLAMP_EN" offset="6" width="1"/>
+		<field name="SSP1_ELPG_VCORE_DOWN" offset="5" width="1"/>
+		<field name="SSP1_ELPG_CLAMP_EN_EARLY" offset="4" width="1"/>
+		<field name="SSP1_ELPG_CLAMP_EN" offset="3" width="1"/>
+		<field name="SSP0_ELPG_VCORE_DOWN" offset="2" width="1"/>
+		<field name="SSP0_ELPG_CLAMP_EN_EARLY" offset="1" width="1"/>
+		<field name="SSP0_ELPG_CLAMP_EN" offset="0" width="1"/>
+	</register>
+
+	<register name="USB3_PAD_MUX" offset="0x028">
+		<field name="SATA_PAD_LANE0" offset="30" width="2"/>
+		<field name="PCIE_PAD_LANE6" offset="24" width="2"/>
+		<field name="PCIE_PAD_LANE5" offset="22" width="2"/>
+		<field name="PCIE_PAD_LANE4" offset="20" width="2"/>
+		<field name="PCIE_PAD_LANE3" offset="18" width="2"/>
+		<field name="PCIE_PAD_LANE2" offset="16" width="2"/>
+		<field name="PCIE_PAD_LANE1" offset="14" width="2"/>
+		<field name="PCIE_PAD_LANE0" offset="12" width="2"/>
+		<field name="FORCE_SATA_PAD_IDDQ_DISABLE_MASK0" offset="8" width="1"/>
+		<field name="FORCE_PCIE_PAD_IDDQ_DISABLE_MASK6" offset="7" width="1"/>
+		<field name="FORCE_PCIE_PAD_IDDQ_DISABLE_MASK5" offset="6" width="1"/>
+		<field name="FORCE_PCIE_PAD_IDDQ_DISABLE_MASK4" offset="5" width="1"/>
+		<field name="FORCE_PCIE_PAD_IDDQ_DISABLE_MASK3" offset="4" width="1"/>
+		<field name="FORCE_PCIE_PAD_IDDQ_DISABLE_MASK2" offset="3" width="1"/>
+		<field name="FORCE_PCIE_PAD_IDDQ_DISABLE_MASK1" offset="2" width="1"/>
+		<field name="FORCE_PCIE_PAD_IDDQ_DISABLE_MASK0" offset="1" width="1"/>
+		<field name="FORCE_PCIE_PAD_IDDQ_DISABLE" offset="0" width="1"/>
+	</register>
+
+	<register name="WAKE_CTRL" offset="0x02c">
+		<field name="LANE_S0_FORCE_TX_RDET_CLK_ENABLE" offset="7" width="1"/>
+		<field name="LANE_P6_FORCE_TX_RDET_CLK_ENABLE" offset="6" width="1"/>
+		<field name="LANE_P5_FORCE_TX_RDET_CLK_ENABLE" offset="5" width="1"/>
+		<field name="LANE_P4_FORCE_TX_RDET_CLK_ENABLE" offset="4" width="1"/>
+		<field name="LANE_P3_FORCE_TX_RDET_CLK_ENABLE" offset="3" width="1"/>
+		<field name="LANE_P2_FORCE_TX_RDET_CLK_ENABLE" offset="2" width="1"/>
+		<field name="LANE_P1_FORCE_TX_RDET_CLK_ENABLE" offset="1" width="1"/>
+		<field name="LANE_P0_FORCE_TX_RDET_CLK_ENABLE" offset="0" width="1"/>
+	</register>
+
+	<register name="PM_SPARE" offset="0x030">
+		<field name="HSIC_PM_SPARE_BIT3" offset="11" width="1"/>
+		<field name="HSIC_PM_SPARE_BIT2" offset="10" width="1"/>
+		<field name="HSIC_PM_SPARE_BIT1" offset="9" width="1"/>
+		<field name="HSIC_PM_SPARE_BIT0" offset="8" width="1"/>
+		<field name="OTG_PM_SPARE_BIT3" offset="3" width="1"/>
+		<field name="OTG_PM_SPARE_BIT2" offset="2" width="1"/>
+		<field name="OTG_PM_SPARE_BIT1" offset="1" width="1"/>
+		<field name="OTG_PM_SPARE_BIT0" offset="0" width="1"/>
+	</register>
+
+	<register name="UPHY_CFG_STB" offset="0x034">
+	</register>
+
+	<register name="USB2_BATTERY_CHRG_OTG_PAD0_CTL_0" offset="0x080">
+	</register>
+
+	<register name="USB2_BATTERY_CHRG_OTG_PAD0_CTL_1" offset="0x084">
+	</register>
+
+	<register name="USB2_OTG_PAD0_CTL_0" offset="0x088">
+		<field name="PD_ZI" offset="29" width="1"/>
+		<field name="PD2_OVRD_EN" offset="28" width="1"/>
+		<field name="PD2" offset="27" width="1"/>
+		<field name="PD" offset="26" width="1"/>
+		<field name="TERM_SEL" offset="25" width="1"/>
+		<field name="LS_FSLEW" offset="21" width="4"/>
+		<field name="LS_RSLEW" offset="17" width="4"/>
+		<field name="FS_FSLEW" offset="13" width="4"/>
+		<field name="FS_RSLEW" offset="9" width="4"/>
+		<field name="HS_SLEW" offset="6" width="3"/>
+		<field name="HS_CURR_LEVEL" offset="0" width="6"/>
+	</register>
+
+	<register name="USB2_OTG_PAD0_CTL_1" offset="0x08c">
+		<field name="RPD_CTRL" offset="26" width="5"/>
+		<field name="RPU_STATUS_HIGH" offset="25" width="1"/>
+		<field name="RPU_SWITCH_LOW" offset="24" width="1"/>
+		<field name="RPU_SWITCH_OVRD" offset="23" width="1"/>
+		<field name="HS_LOOPBACK_OVRD_VAL" offset="22" width="1"/>
+		<field name="HS_LOOPBACK_OVRD_EN" offset="21" width="1"/>
+		<field name="PTERM_RANGE_ADJ" offset="17" width="4"/>
+		<field name="PD_DISC_OVRD_VAL" offset="16" width="1"/>
+		<field name="PD_CHRP_OVRD_VAL" offset="15" width="1"/>
+		<field name="RPU_RANGE_ADJ" offset="13" width="2"/>
+		<field name="HS_COUP_EN" offset="11" width="2"/>
+		<field name="SPARE" offset="7" width="4"/>
+		<field name="TERM_RANGE_ADJ" offset="3" width="4"/>
+		<field name="PD_DR" offset="2" width="1"/>
+		<field name="PD_DISC_OVRD" offset="1" width="1"/>
+		<field name="PD_CHRP_OVRD" offset="0" width="1"/>
+	</register>
+
+	<register name="USB2_BATTERY_CHRG_OTG_PAD0_CTL_0" offset="0x0c0">
+	</register>
+
+	<register name="USB2_BATTERY_CHRG_OTG_PAD0_CTL_1" offset="0x0c4">
+	</register>
+
+	<register name="USB2_OTG_PAD1_CTL_0" offset="0x0c8">
+		<field name="PD_ZI" offset="29" width="1"/>
+		<field name="PD2_OVRD_EN" offset="28" width="1"/>
+		<field name="PD2" offset="27" width="1"/>
+		<field name="PD" offset="26" width="1"/>
+		<field name="TERM_SEL" offset="25" width="1"/>
+		<field name="LS_FSLEW" offset="21" width="4"/>
+		<field name="LS_RSLEW" offset="17" width="4"/>
+		<field name="FS_FSLEW" offset="13" width="4"/>
+		<field name="FS_RSLEW" offset="9" width="4"/>
+		<field name="HS_SLEW" offset="6" width="3"/>
+		<field name="HS_CURR_LEVEL" offset="0" width="6"/>
+	</register>
+
+	<register name="USB2_OTG_PAD1_CTL_1" offset="0x0cc">
+		<field name="RPD_CTRL" offset="26" width="5"/>
+		<field name="RPU_STATUS_HIGH" offset="25" width="1"/>
+		<field name="RPU_SWITCH_LOW" offset="24" width="1"/>
+		<field name="RPU_SWITCH_OVRD" offset="23" width="1"/>
+		<field name="HS_LOOPBACK_OVRD_VAL" offset="22" width="1"/>
+		<field name="HS_LOOPBACK_OVRD_EN" offset="21" width="1"/>
+		<field name="PTERM_RANGE_ADJ" offset="17" width="4"/>
+		<field name="PD_DISC_OVRD_VAL" offset="16" width="1"/>
+		<field name="PD_CHRP_OVRD_VAL" offset="15" width="1"/>
+		<field name="RPU_RANGE_ADJ" offset="13" width="2"/>
+		<field name="HS_COUP_EN" offset="11" width="2"/>
+		<field name="SPARE" offset="7" width="4"/>
+		<field name="TERM_RANGE_ADJ" offset="3" width="4"/>
+		<field name="PD_DR" offset="2" width="1"/>
+		<field name="PD_DISC_OVRD" offset="1" width="1"/>
+		<field name="PD_CHRP_OVRD" offset="0" width="1"/>
+	</register>
+
+	<register name="USB2_BATTERY_CHRG_OTG_PAD2_CTL_0" offset="0x100">
+	</register>
+
+	<register name="USB2_BATTERY_CHRG_OTG_PAD2_CTL_1" offset="0x104">
+	</register>
+
+	<register name="USB2_OTG_PAD2_CTL_0" offset="0x108">
+		<field name="PD_ZI" offset="29" width="1"/>
+		<field name="PD2_OVRD_EN" offset="28" width="1"/>
+		<field name="PD2" offset="27" width="1"/>
+		<field name="PD" offset="26" width="1"/>
+		<field name="TERM_SEL" offset="25" width="1"/>
+		<field name="LS_FSLEW" offset="21" width="4"/>
+		<field name="LS_RSLEW" offset="17" width="4"/>
+		<field name="FS_FSLEW" offset="13" width="4"/>
+		<field name="FS_RSLEW" offset="9" width="4"/>
+		<field name="HS_SLEW" offset="6" width="3"/>
+		<field name="HS_CURR_LEVEL" offset="0" width="6"/>
+	</register>
+
+	<register name="USB2_OTG_PAD2_CTL_1" offset="0x10c">
+		<field name="RPD_CTRL" offset="26" width="5"/>
+		<field name="RPU_STATUS_HIGH" offset="25" width="1"/>
+		<field name="RPU_SWITCH_LOW" offset="24" width="1"/>
+		<field name="RPU_SWITCH_OVRD" offset="23" width="1"/>
+		<field name="HS_LOOPBACK_OVRD_VAL" offset="22" width="1"/>
+		<field name="HS_LOOPBACK_OVRD_EN" offset="21" width="1"/>
+		<field name="PTERM_RANGE_ADJ" offset="17" width="4"/>
+		<field name="PD_DISC_OVRD_VAL" offset="16" width="1"/>
+		<field name="PD_CHRP_OVRD_VAL" offset="15" width="1"/>
+		<field name="RPU_RANGE_ADJ" offset="13" width="2"/>
+		<field name="HS_COUP_EN" offset="11" width="2"/>
+		<field name="SPARE" offset="7" width="4"/>
+		<field name="TERM_RANGE_ADJ" offset="3" width="4"/>
+		<field name="PD_DR" offset="2" width="1"/>
+		<field name="PD_DISC_OVRD" offset="1" width="1"/>
+		<field name="PD_CHRP_OVRD" offset="0" width="1"/>
+	</register>
+
+	<register name="USB2_BATTERY_CHRG_OTG_PAD3_CTL_0" offset="0x140">
+	</register>
+
+	<register name="USB2_BATTERY_CHRG_OTG_PAD3_CTL_1" offset="0x144">
+	</register>
+
+
+	<register name="USB2_OTG_PAD3_CTL_0" offset="0x148">
+		<field name="PD_ZI" offset="29" width="1"/>
+		<field name="PD2_OVRD_EN" offset="28" width="1"/>
+		<field name="PD2" offset="27" width="1"/>
+		<field name="PD" offset="26" width="1"/>
+		<field name="TERM_SEL" offset="25" width="1"/>
+		<field name="LS_FSLEW" offset="21" width="4"/>
+		<field name="LS_RSLEW" offset="17" width="4"/>
+		<field name="FS_FSLEW" offset="13" width="4"/>
+		<field name="FS_RSLEW" offset="9" width="4"/>
+		<field name="HS_SLEW" offset="6" width="3"/>
+		<field name="HS_CURR_LEVEL" offset="0" width="6"/>
+	</register>
+
+	<register name="USB2_OTG_PAD3_CTL_1" offset="0x14c">
+		<field name="RPD_CTRL" offset="26" width="5"/>
+		<field name="RPU_STATUS_HIGH" offset="25" width="1"/>
+		<field name="RPU_SWITCH_LOW" offset="24" width="1"/>
+		<field name="RPU_SWITCH_OVRD" offset="23" width="1"/>
+		<field name="HS_LOOPBACK_OVRD_VAL" offset="22" width="1"/>
+		<field name="HS_LOOPBACK_OVRD_EN" offset="21" width="1"/>
+		<field name="PTERM_RANGE_ADJ" offset="17" width="4"/>
+		<field name="PD_DISC_OVRD_VAL" offset="16" width="1"/>
+		<field name="PD_CHRP_OVRD_VAL" offset="15" width="1"/>
+		<field name="RPU_RANGE_ADJ" offset="13" width="2"/>
+		<field name="HS_COUP_EN" offset="11" width="2"/>
+		<field name="SPARE" offset="7" width="4"/>
+		<field name="TERM_RANGE_ADJ" offset="3" width="4"/>
+		<field name="PD_DR" offset="2" width="1"/>
+		<field name="PD_DISC_OVRD" offset="1" width="1"/>
+		<field name="PD_CHRP_OVRD" offset="0" width="1"/>
+	</register>
+
+	<register name="USB2_BATERY_CHRG_TDCD_DBNC_TIMER" offset="0x280">
+	</register>
+
+	<register name="USB2_BIAS_PAD_CTL_0" offset="0x284">
+		<field name="TRK_PWR_ENA" offset="29" width="1"/>
+		<field name="SPARE" offset="25" width="4"/>
+		<field name="CHG_DIV" offset="21" width="4"/>
+		<field name="TEMP_COEF" offset="18" width="3"/>
+		<field name="VREF_CTRL" offset="15" width="3"/>
+		<field name="ADJRPU" offset="12" width="3"/>
+		<field name="PD" offset="11" width="1"/>
+		<field name="TERM_OFFSET" offset="8" width="3"/>
+		<field name="HS_CHIRP_LEVEL" offset="6" width="2"/>
+		<field name="HS_DISCON_LEVEL" offset="3" width="3"/>
+		<field name="HS_SQUELCH_LEVEL" offset="0" width="3"/>
+	</register>
+
+	<register name="USB2_BIAS_PAD_CTL_1" offset="0x288">
+		<field name="FORCE_TRK_CLK_EN" offset="30" width="1"/>
+		<field name="TRK_SW_OVRD" offset="29" width="1"/>
+		<field name="TRK_DONE" offset="28" width="1"/>
+		<field name="TRK_START" offset="27" width="1"/>
+		<field name="PD_TRK" offset="26" width="1"/>
+		<field name="TRK_DONE_RESET_TIMER" offset="19" width="7"/>
+		<field name="TRK_START_TIMER" offset="12" width="4"/>
+		<field name="PCTRL" offset="6" width="6"/>
+		<field name="TCTRL" offset="0" width="6"/>
+	</register>
+
+	<register name="HSIC_PAD0_CTL_0" offset="0x300">
+		<field name="RPU_STROBE" offset="18" width="1"/>
+		<field name="RPU_DATA1" offset="17" width="1"/>
+		<field name="RPU_DATA0" offset="16" width="1"/>
+		<field name="RPD_STROBE" offset="15" width="1"/>
+		<field name="RPD_DATA1" offset="14" width="1"/>
+		<field name="RPD_DATA0" offset="13" width="1"/>
+		<field name="LPBK_STROBE" offset="12" width="1"/>
+		<field name="LPBK_DATA1" offset="11" width="1"/>
+		<field name="LPBK_DATA0" offset="10" width="1"/>
+		<field name="PD_ZI_STROBE" offset="9" width="1"/>
+		<field name="PD_ZI_DATA1" offset="8" width="1"/>
+		<field name="PD_ZI_DATA0" offset="7" width="1"/>
+		<field name="PD_RX_STROBE" offset="6" width="1"/>
+		<field name="PD_RX_DATA1" offset="5" width="1"/>
+		<field name="PD_RX_DATA0" offset="4" width="1"/>
+		<field name="PD_TX_STROBE" offset="3" width="1"/>
+		<field name="PD_TX_DATA1" offset="2" width="1"/>
+		<field name="PD_TX_DATA0" offset="1" width="1"/>
+		<field name="IDDQ" offset="18" width="0"/>
+	</register>
+
+	<register name="HSIC_PAD0_CTL_1" offset="0x304">
+		<field name="RTERM" offset="12" width="5"/>
+		<field name="HSIC_OPT" offset="8" width="4"/>
+		<field name="TX_SLEW" offset="4" width="4"/>
+		<field name="RX_RTUNEP" offset="0" width="4"/>
+	</register>
+
+	<register name="HSIC_PAD0_CTL_2" offset="0x308">
+		<field name="RX_STROBE_TRIM" offset="8" width="4"/>
+		<field name="RX_DATA1_TRIM" offset="4" width="4"/>
+		<field name="RX_DATA0_TRIM" offset="0" width="4"/>
+	</register>
+
+	<register name="HSIC_PAD1_CTL_0" offset="0x320">
+		<field name="RPU_STROBE" offset="18" width="1"/>
+		<field name="RPU_DATA1" offset="17" width="1"/>
+		<field name="RPU_DATA0" offset="16" width="1"/>
+		<field name="RPD_STROBE" offset="15" width="1"/>
+		<field name="RPD_DATA1" offset="14" width="1"/>
+		<field name="RPD_DATA0" offset="13" width="1"/>
+		<field name="LPBK_STROBE" offset="12" width="1"/>
+		<field name="LPBK_DATA1" offset="11" width="1"/>
+		<field name="LPBK_DATA0" offset="10" width="1"/>
+		<field name="PD_ZI_STROBE" offset="9" width="1"/>
+		<field name="PD_ZI_DATA1" offset="8" width="1"/>
+		<field name="PD_ZI_DATA0" offset="7" width="1"/>
+		<field name="PD_RX_STROBE" offset="6" width="1"/>
+		<field name="PD_RX_DATA1" offset="5" width="1"/>
+		<field name="PD_RX_DATA0" offset="4" width="1"/>
+		<field name="PD_TX_STROBE" offset="3" width="1"/>
+		<field name="PD_TX_DATA1" offset="2" width="1"/>
+		<field name="PD_TX_DATA0" offset="1" width="1"/>
+		<field name="IDDQ" offset="18" width="0"/>
+	</register>
+
+	<register name="HSIC_PAD1_CTL_1" offset="0x324">
+		<field name="RTERM" offset="12" width="5"/>
+		<field name="HSIC_OPT" offset="8" width="4"/>
+		<field name="TX_SLEW" offset="4" width="4"/>
+		<field name="RX_RTUNEP" offset="0" width="4"/>
+	</register>
+
+	<register name="HSIC_PAD1_CTL_2" offset="0x328">
+		<field name="RX_STROBE_TRIM" offset="8" width="4"/>
+		<field name="RX_DATA1_TRIM" offset="4" width="4"/>
+		<field name="RX_DATA0_TRIM" offset="0" width="4"/>
+	</register>
+
+	<register name="HSIC_PAD_TRK_CTL" offset="0x340">
+	</register>
+
+	<register name="HSIC_STRB_TRIM_CONTROL" offset="0x344">
+	</register>
+
+	<register name="UPHY_PLL_P0_CTL_1" offset="0x360">
+		<field name="PLL0_FREQ_PSDIV" offset="28" width="2"/>
+		<field name="PLL0_FREQ_NDIV" offset="20" width="8"/>
+		<field name="PLL0_FREQ_MDIV" offset="16" width="2"/>
+		<field name="PLL0_LOCKDET_STATUS" offset="15" width="1"/>
+		<field name="PLL0_MODE" offset="8" width="2"/>
+		<field name="PLL0_BYPASS_EN" offset="7" width="1"/>
+		<field name="PLL0_FREERUN_EN" offset="6" width="1"/>
+		<field name="PLL0_PWR_OVRD" offset="4" width="1"/>
+		<field name="PLL0_ENABLE" offset="3" width="1"/>
+		<field name="PLL0_SLEEP" offset="1" width="2"/>
+		<field name="PLL0_IDDQ" offset="0" width="1"/>
+	</register>
+
+	<register name="UPHY_PLL_P0_CTL_2" offset="0x364">
+	</register>
+
+	<register name="UPHY_PLL_P0_CTL_3" offset="0x368">
+	</register>
+
+	<register name="UPHY_PLL_P0_CTL_4" offset="0x36c">
+	</register>
+
+	<register name="UPHY_PLL_P0_CTL_5" offset="0x370">
+	</register>
+
+	<register name="UPHY_PLL_P0_CTL_6" offset="0x374">
+	</register>
+
+	<register name="UPHY_PLL_P0_CTL_7" offset="0x378">
+	</register>
+
+	<register name="UPHY_PLL_P0_CTL_8" offset="0x37c">
+	</register>
+
+	<register name="UPHY_PLL_P0_CTL_9" offset="0x380">
+	</register>
+
+	<register name="UPHY_PLL_P0_CTL_10" offset="0x384">
+	</register>
+
+	<register name="UPHY_PLL_P0_CTL_11" offset="0x388">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P0_CTL_1" offset="0x460">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P0_CTL_2" offset="0x464">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P0_CTL_3" offset="0x468">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P0_CTL_4" offset="0x46c">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P0_CTL_5" offset="0x470">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P0_CTL_6" offset="0x474">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P0_CTL_7" offset="0x478">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P0_CTL_8" offset="0x47c">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P0_CTL_9" offset="0x480">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P1_CTL_1" offset="0x4a0">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P1_CTL_2" offset="0x4a4">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P1_CTL_3" offset="0x4a8">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P1_CTL_4" offset="0x4ac">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P1_CTL_5" offset="0x4b0">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P1_CTL_6" offset="0x4b4">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P1_CTL_7" offset="0x4b8">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P1_CTL_8" offset="0x4bc">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P1_CTL_9" offset="0x4c0">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P2_CTL_1" offset="0x4e0">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P2_CTL_2" offset="0x4e4">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P2_CTL_3" offset="0x4e8">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P2_CTL_4" offset="0x4ec">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P2_CTL_5" offset="0x4f0">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P2_CTL_6" offset="0x4f4">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P2_CTL_7" offset="0x4f8">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P2_CTL_8" offset="0x4fc">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P2_CTL_9" offset="0x500">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P3_CTL_1" offset="0x520">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P3_CTL_2" offset="0x524">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P3_CTL_3" offset="0x528">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P3_CTL_4" offset="0x52c">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P3_CTL_5" offset="0x530">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P3_CTL_6" offset="0x534">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P3_CTL_7" offset="0x538">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P3_CTL_8" offset="0x53c">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P3_CTL_9" offset="0x540">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P4_CTL_1" offset="0x560">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P4_CTL_2" offset="0x564">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P4_CTL_3" offset="0x568">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P4_CTL_4" offset="0x56c">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P4_CTL_5" offset="0x570">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P4_CTL_6" offset="0x574">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P4_CTL_7" offset="0x578">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P4_CTL_8" offset="0x57c">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P4_CTL_9" offset="0x580">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P5_CTL_1" offset="0x5a0">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P5_CTL_2" offset="0x5a4">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P5_CTL_3" offset="0x5a8">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P5_CTL_4" offset="0x5ac">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P5_CTL_5" offset="0x5b0">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P5_CTL_6" offset="0x5b4">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P5_CTL_7" offset="0x5b8">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P5_CTL_8" offset="0x5bc">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P5_CTL_9" offset="0x5c0">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P6_CTL_1" offset="0x5e0">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P6_CTL_2" offset="0x5e4">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P6_CTL_3" offset="0x5e8">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P6_CTL_4" offset="0x5ec">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P6_CTL_5" offset="0x5f0">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P6_CTL_6" offset="0x5f4">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P6_CTL_7" offset="0x5f8">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P6_CTL_8" offset="0x5fc">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P6_CTL_9" offset="0x600">
+	</register>
+
+	<register name="UPHY_PLL_S0_CTL_1" offset="0x860">
+		<field name="PLL0_FREQ_PSDIV" offset="28" width="2"/>
+		<field name="PLL0_FREQ_NDIV" offset="20" width="8"/>
+		<field name="PLL0_FREQ_MDIV" offset="16" width="2"/>
+		<field name="PLL0_LOCKDET_STATUS" offset="15" width="1"/>
+		<field name="PLL0_MODE" offset="8" width="2"/>
+		<field name="PLL0_BYPASS_EN" offset="7" width="1"/>
+		<field name="PLL0_FREERUN_EN" offset="6" width="1"/>
+		<field name="PLL0_PWR_OVRD" offset="4" width="1"/>
+		<field name="PLL0_ENABLE" offset="3" width="1"/>
+		<field name="PLL0_SLEEP" offset="1" width="2"/>
+		<field name="PLL0_IDDQ" offset="0" width="1"/>
+	</register>
+
+	<register name="UPHY_PLL_S0_CTL_2" offset="0x864">
+	</register>
+
+	<register name="UPHY_PLL_S0_CTL_3" offset="0x868">
+	</register>
+
+	<register name="UPHY_PLL_S0_CTL_4" offset="0x86c">
+	</register>
+
+	<register name="UPHY_PLL_S0_CTL_5" offset="0x870">
+	</register>
+
+	<register name="UPHY_PLL_S0_CTL_6" offset="0x874">
+	</register>
+
+	<register name="UPHY_PLL_S0_CTL_7" offset="0x878">
+	</register>
+
+	<register name="UPHY_PLL_S0_CTL_8" offset="0x87c">
+	</register>
+
+	<register name="UPHY_PLL_S0_CTL_9" offset="0x880">
+	</register>
+
+	<register name="UPHY_PLL_S0_CTL_10" offset="0x884">
+	</register>
+
+	<register name="UPHY_PLL_S0_CTL_11" offset="0x888">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P0_CTL_1" offset="0x960">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P0_CTL_2" offset="0x964">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P0_CTL_3" offset="0x968">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P0_CTL_4" offset="0x96c">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P0_CTL_5" offset="0x970">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P0_CTL_6" offset="0x974">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P0_CTL_7" offset="0x978">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P0_CTL_8" offset="0x97c">
+	</register>
+
+	<register name="UPHY_MISC_PAD_P0_CTL_9" offset="0x980">
+	</register>
+
+	<register name="UPHY_USB3_PAD0_ECTL_1" offset="0xa60">
+	</register>
+
+	<register name="UPHY_USB3_PAD0_ECTL_2" offset="0xa64">
+	</register>
+
+	<register name="UPHY_USB3_PAD0_ECTL_3" offset="0xa68">
+	</register>
+
+	<register name="UPHY_USB3_PAD0_ECTL_4" offset="0xa6c">
+	</register>
+
+	<register name="UPHY_USB3_PAD0_ECTL_5" offset="0xa70">
+	</register>
+
+	<register name="UPHY_USB3_PAD0_ECTL_6" offset="0xa74">
+	</register>
+
+	<register name="UPHY_USB3_PAD0_CTL_0" offset="0xa78">
+	</register>
+
+	<register name="UPHY_USB3_PAD1_ECTL_1" offset="0xaa0">
+	</register>
+
+	<register name="UPHY_USB3_PAD1_ECTL_2" offset="0xaa4">
+	</register>
+
+	<register name="UPHY_USB3_PAD1_ECTL_3" offset="0xaa8">
+	</register>
+
+	<register name="UPHY_USB3_PAD1_ECTL_4" offset="0xaac">
+	</register>
+
+	<register name="UPHY_USB3_PAD1_ECTL_5" offset="0xab0">
+	</register>
+
+	<register name="UPHY_USB3_PAD1_ECTL_6" offset="0xab4">
+	</register>
+
+	<register name="UPHY_USB3_PAD1_CTL_0" offset="0xab8">
+	</register>
+
+	<register name="UPHY_USB3_PAD2_ECTL_1" offset="0xae0">
+	</register>
+
+	<register name="UPHY_USB3_PAD2_ECTL_2" offset="0xae4">
+	</register>
+
+	<register name="UPHY_USB3_PAD2_ECTL_3" offset="0xae8">
+	</register>
+
+	<register name="UPHY_USB3_PAD2_ECTL_4" offset="0xaec">
+	</register>
+
+	<register name="UPHY_USB3_PAD2_ECTL_5" offset="0xaf0">
+	</register>
+
+	<register name="UPHY_USB3_PAD2_ECTL_6" offset="0xaf4">
+	</register>
+
+	<register name="UPHY_USB3_PAD2_CTL_0" offset="0xaf8">
+	</register>
+
+	<register name="UPHY_USB3_PAD3_ECTL_1" offset="0xb20">
+	</register>
+
+	<register name="UPHY_USB3_PAD3_ECTL_2" offset="0xb24">
+	</register>
+
+	<register name="UPHY_USB3_PAD3_ECTL_3" offset="0xb28">
+	</register>
+
+	<register name="UPHY_USB3_PAD3_ECTL_4" offset="0xb2c">
+	</register>
+
+	<register name="UPHY_USB3_PAD3_ECTL_5" offset="0xb30">
+	</register>
+
+	<register name="UPHY_USB3_PAD3_ECTL_6" offset="0xb34">
+	</register>
+
+	<register name="UPHY_USB3_PAD3_CTL_0" offset="0xb38">
+	</register>
+
+	<register name="USB2_VBUS_ID" offset="0xc60">
+	</register>
+</module>

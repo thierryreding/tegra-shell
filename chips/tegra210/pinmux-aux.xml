@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module name="PINMUX_AUX" base="0x70003000">
+	<register name="HDMI_INT_DP_HPD" offset="0x19c">
+		<field name="E_SCHMT" offset="12" width="1"/>
+		<field name="E_OD" offset="11" width="1"/>
+		<field name="E_IO_HV" offset="10" width="1"/>
+		<field name="E_LPDR" offset="8" width="1"/>
+		<field name="LOCK" offset="7" width="1"/>
+		<field name="E_INPUT" offset="6" width="1"/>
+		<field name="PARK" offset="5" width="1"/>
+		<field name="TRISTATE" offset="4" width="1"/>
+		<field name="PUPD" offset="2" width="2"/>
+		<field name="PM" offset="0" width="2"/>
+	</register>
+</module>

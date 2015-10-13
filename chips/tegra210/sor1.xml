@@ -1,7 +1,290 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <module name="SOR1" base="0x54580000">
-	<register name="SOR_XBAR_CTRL" offset="0x4a">
+	<register name="SOR_CTXSW" offset="0x000">
+		<field name="NEXT_CHANNEL" offset="28" width="4"/>
+		<field name="NEXT_CLASS" offset="16" width="10"/>
+		<field name="CURR_CHANNEL" offset="12" width="4"/>
+		<field name="AUTO_ACK" offset="11" width="1"/>
+		<field name="CURR_CLASS" offset="0" width="10"/>
+	</register>
+
+	<register name="SOR_SUPER_STATE0" offset="0x004">
+		<field name="UPDATE" offset="0" width="1"/>
+	</register>
+
+	<register name="SOR_SUPER_STATE1" offset="0x008">
+		<field name="ATTACHED" offset="3" width="1"/>
+		<field name="ASY_ORMODE" offset="2" width="1"/>
+		<field name="ASY_HEAD_OPMODE" offset="0" width="2"/>
+	</register>
+
+	<register name="SOR_STATE0" offset="0x00c">
+		<field name="UPDATE" offset="0" width="1"/>
+	</register>
+
+	<register name="SOR_STATE1" offset="0x010">
+		<field name="ASY_PIXELDEPTH" offset="17" width="4"/>
+		<field name="ASY_REPLICATE" offset="15" width="2"/>
+		<field name="ASY_DEPOL" offset="14" width="1"/>
+		<field name="ASY_VSYNCPOL" offset="13" width="1"/>
+		<field name="ASY_HSYNCPOL" offset="12" width="1"/>
+		<field name="ASY_PROTOCOL" offset="8" width="4"/>
+		<field name="ASY_CRCMODE" offset="6" width="2"/>
+		<field name="ASY_SUBOWNER" offset="4" width="2"/>
+		<field name="ASY_OWNER" offset="0" width="4"/>
+	</register>
+
+	<register name="SOR_HEAD_STATE0" offset="0x014" count="2">
+		<field name="INTERLACED" offset="4" width="2"/>
+		<field name="RANGE_COMPRESS" offset="3" width="1"/>
+		<field name="DYNRANGE" offset="2" width="1"/>
+		<field name="COLORSPACE" offset="0" width="2"/>
+	</register>
+
+	<register name="SOR_HEAD_STATE1" offset="0x01c" count="2">
+		<field name="VTOTAL" offset="16" width="15"/>
+		<field name="HTOTAL" offset="0" width="15"/>
+	</register>
+
+	<register name="SOR_HEAD_STATE2" offset="0x024" count="2">
+		<field name="VSYNC_END" offset="16" width="15"/>
+		<field name="HSYNC_END" offset="0" width="15"/>
+	</register>
+
+	<register name="SOR_HEAD_STATE3" offset="0x02c" count="2">
+		<field name="VBLANK_END" offset="16" width="15"/>
+		<field name="HBLANK_END" offset="0" width="15"/>
+	</register>
+
+	<register name="SOR_HEAD_STATE4" offset="0x034" count="2">
+		<field name="VBLANK_START" offset="16" width="15"/>
+		<field name="HBLANK_START" offset="0" width="15"/>
+	</register>
+
+	<register name="SOR_HEAD_STATE5" offset="0x03c" count="2">
+		<field name="VBLANK_END_2" offset="16" width="15"/>
+		<field name="VBLANK_START_2" offset="0" width="15"/>
+	</register>
+
+	<register name="SOR_CRC_CNTRL" offset="0x044">
+		<field name="ARM_CRC_ENABLE" offset="0" width="1"/>
+	</register>
+
+	<register name="SOR_DP_DEBUG_MVID" offset="0x048">
+		<field name="VALUE" offset="0" width="24"/>
+	</register>
+
+	<register name="SOR_CLK_CNTRL" offset="0x04c">
+		<field name="DP_LINK_SPEED" offset="2" width="5"/>
+		<field name="DP_CLK_SEL" offset="0" width="2"/>
+	</register>
+
+	<register name="SOR_CAP" offset="0x050">
+		<field name="LVDS_ONLY" offset="31" width="1"/>
+		<field name="DP_B" offset="25" width="1"/>
+		<field name="DP_A" offset="24" width="1"/>
+		<field name="DDI" offset="20" width="1"/>
+		<field name="SDI" offset="16" width="1"/>
+		<field name="DISPLAY_OVER_PCIE" offset="13" width="1"/>
+		<field name="SINGLE_TMDS_225_MHZ" offset="12" width="1"/>
+		<field name="DUAL_TMDS" offset="11" width="1"/>
+		<field name="DUAL_SINGLE_TMDS" offset="10" width="1"/>
+		<field name="SINGLE_TMDS_B" offset="9" width="1"/>
+		<field name="SINGLE_TMDS_A" offset="8" width="1"/>
+		<field name="DUAL_LVDS_24" offset="3" width="1"/>
+		<field name="DUAL_LVDS_18" offset="2" width="1"/>
+		<field name="SINGLE_LVDS_24" offset="1" width="1"/>
+		<field name="SINGLE_LVDS_18" offset="0" width="1"/>
+	</register>
+
+	<register name="SOR_PWR" offset="0x054">
+		<field name="SETTING_NEW" offset="31" width="1"/>
+		<field name="MODE" offset="28" width="1"/>
+		<field name="HALT_DELAY" offset="24" width="1"/>
+		<field name="SAFE_START" offset="17" width="1"/>
+		<field name="SAFE_STATE" offset="16" width="1"/>
+		<field name="NORMAL_START" offset="1" width="1"/>
+		<field name="NORMAL_STATE" offset="0" width="1"/>
+	</register>
+
+	<register name="SOR_TEST" offset="0x058">
+		<field name="TESTMUX" offset="24" width="8"/>
+		<field name="CRC" offset="23" width="1"/>
+		<field name="TPAT" offset="20" width="3"/>
+		<field name="DSRC" offset="16" width="2"/>
+		<field name="HEAD_NUMBER" offset="12" width="4"/>
+		<field name="ATTACHED" offset="10" width="1"/>
+		<field name="ACT_HEAD_OPMODE" offset="8" width="2"/>
+		<field name="INVD" offset="6" width="1"/>
+		<field name="TEST_ENABLE" offset="1" width="1"/>
+	</register>
+
+	<register name="SOR_PLL0" offset="0x05c">
+		<field name="ICHPMP" offset="24" width="4"/>
+		<field name="FILTER" offset="16" width="4"/>
+		<field name="TXREG_LEVEL" offset="12" width="2"/>
+		<field name="VCOCAP" offset="8" width="4"/>
+		<field name="PLLREG_LEVEL" offset="6" width="2"/>
+		<field name="PULLDOWN" offset="5" width="1"/>
+		<field name="VCOPD" offset="2" width="1"/>
+		<field name="PWR" offset="0" width="1"/>
+	</register>
+
+	<register name="SOR_PLL1" offset="0x060">
+		<field name="COHERENT_MODE" offset="29" width="1"/>
+		<field name="LVDS_CM" offset="24" width="2"/>
+		<field name="LOADADJ" offset="20" width="4"/>
+		<field name="TERM_COMPOUT" offset="15" width="1"/>
+		<field name="TMDS_TERMADJ" offset="9" width="4"/>
+		<field name="TMDS_TERM" offset="8" width="1"/>
+		<field name="IO_CURRENT" offset="0" width="6"/>
+	</register>
+
+	<register name="SOR_PLL2" offset="0x064">
+		<field name="PLL_MDIV" offset="28" width="4"/>
+		<field name="CLKGEN_MODE" offset="26" width="2"/>
+		<field name="AUX9" offset="25" width="1"/>
+		<field name="AUX8" offset="24" width="1"/>
+		<field name="AUX7" offset="23" width="1"/>
+		<field name="AUX6" offset="22" width="1"/>
+		<field name="AUX5" offset="21" width="1"/>
+		<field name="AUX4" offset="20" width="1"/>
+		<field name="AUX3" offset="19" width="1"/>
+		<field name="AUX2" offset="18" width="1"/>
+		<field name="AUX1" offset="17" width="1"/>
+		<field name="AUX0" offset="16" width="1"/>
+		<field name="PLL_NDIV" offset="8" width="8"/>
+		<field name="PLL_PDIV" offset="4" width="4"/>
+		<field name="PLL_PDIV_MODE" offset="2" width="2"/>
+		<field name="DIV_RATIO_OVERRIDE" offset="1" width="1"/>
+		<field name="DCIR_PLL_RESET" offset="0" width="1"/>
+	</register>
+
+	<register name="SOR_PLL3" offset="0x068">
+		<field name="BG_TEMP_COEF" offset="28" width="4"/>
+		<field name="BG_VREF_LEVEL" offset="24" width="4"/>
+		<field name="TEST_REFCLK_EN" offset="16" width="8"/>
+		<field name="PLL_BYPASS" offset="14" width="1"/>
+		<field name="PLLVDD_MODE" offset="13" width="1"/>
+		<field name="CLKDIST_MODE" offset="12" width="1"/>
+		<field name="AVDD10_LEVEL" offset="8" width="4"/>
+		<field name="AVDD14_LEVEL" offset="4" width="4"/>
+		<field name="KICKSTART" offset="0" width="2"/>
+	</register>
+
+	<register name="SOR_CSTM" offset="0x06c">
+		<field name="ROTDAT" offset="28" width="3"/>
+		<field name="ROTCLK" offset="24" width="4"/>
+		<field name="PLLDIV" offset="21" width="1"/>
+		<field name="BALANCED" offset="19" width="1"/>
+		<field name="NEW_MODE" offset="18" width="1"/>
+		<field name="DUP_SYNC" offset="17" width="1"/>
+		<field name="LVDS_EN" offset="16" width="1"/>
+		<field name="LINKACTB" offset="15" width="1"/>
+		<field name="LINKACTA" offset="14" width="1"/>
+		<field name="MODE" offset="12" width="2"/>
+		<field name="UPPER" offset="11" width="1"/>
+		<field name="PD_TXCB" offset="9" width="1"/>
+		<field name="PD_TXCA" offset="8" width="1"/>
+		<field name="PD_TXDB_3" offset="7" width="1"/>
+		<field name="PD_TXDB_2" offset="6" width="1"/>
+		<field name="PD_TXDB_1" offset="5" width="1"/>
+		<field name="PD_TXDB_0" offset="4" width="1"/>
+		<field name="PD_TXDA_3" offset="3" width="1"/>
+		<field name="PD_TXDA_2" offset="2" width="1"/>
+		<field name="PD_TXDA_1" offset="1" width="1"/>
+		<field name="PD_TXDA_0" offset="0" width="1"/>
+	</register>
+
+	<register name="SOR_LVDS" offset="0x070">
+		<field name="ROTDAT" offset="28" width="3"/>
+		<field name="ROTCLK" offset="24" width="4"/>
+		<field name="PLLDIV" offset="21" width="1"/>
+		<field name="BALANCED" offset="19" width="1"/>
+		<field name="NEW_MODE" offset="18" width="1"/>
+		<field name="DUP_SYNC" offset="17" width="1"/>
+		<field name="LVDS_EN" offset="16" width="1"/>
+		<field name="LINKACTB" offset="15" width="1"/>
+		<field name="LINKACTA" offset="14" width="1"/>
+		<field name="MODE" offset="12" width="2"/>
+		<field name="UPPER" offset="11" width="1"/>
+		<field name="PD_TXCB" offset="9" width="1"/>
+		<field name="PD_TXCA" offset="8" width="1"/>
+		<field name="PD_TXDB_3" offset="7" width="1"/>
+		<field name="PD_TXDB_2" offset="6" width="1"/>
+		<field name="PD_TXDB_1" offset="5" width="1"/>
+		<field name="PD_TXDB_0" offset="4" width="1"/>
+		<field name="PD_TXDA_3" offset="3" width="1"/>
+		<field name="PD_TXDA_2" offset="2" width="1"/>
+		<field name="PD_TXDA_1" offset="1" width="1"/>
+		<field name="PD_TXDA_0" offset="0" width="1"/>
+	</register>
+
+	<register name="SOR_CRCA" offset="0x074">
+		<field name="VALID" offset="0" width="1"/>
+	</register>
+
+	<register name="SOR_CRCB" offset="0x078">
+		<field name="CRC" offset="0" width="32"/>
+	</register>
+
+	<register name="SOR_BLANK" offest="0x07c">
+		<field name="STATUS" offset="2" width="1"/>
+		<field name="TRANSITION" offset="1" width="1"/>
+		<field name="OVERRIDE" offset="0" width="1"/>
+	</register>
+
+	<register name="SOR_SEQ_CTL" offset="0x080">
+		<field name="SWITCH" offset="30" width="1"/>
+		<field name="STATUS" offset="28" width="1"/>
+		<field name="PC" offset="16" width="4"/>
+		<field name="PD_PC_ALT" offset="12" width="4"/>
+		<field name="PD_PC" offset="8" width="4"/>
+		<field name="PU_PC_ALT" offset="4" width="4"/>
+		<field name="PU_PC" offset="0" width="4"/>
+	</register>
+
+	<register name="SOR_LANE_SEQ_CTL" offset="0x084">
+		<field name="SETTING_NEW" offset="31" width="1"/>
+		<field name="SEQ_STATE" offset="28" width="1"/>
+		<field name="SEQUENCE" offset="20" width="1"/>
+		<field name="NEW_POWER_STATE" offset="16" width="1"/>
+		<field name="DELAY" offset="12" width="4"/>
+		<field name="LANE9_STATE" offset="9" width="1"/>
+		<field name="LANE8_STATE" offset="8" width="1"/>
+		<field name="LANE7_STATE" offset="7" width="1"/>
+		<field name="LANE6_STATE" offset="6" width="1"/>
+		<field name="LANE5_STATE" offset="5" width="1"/>
+		<field name="LANE4_STATE" offset="4" width="1"/>
+		<field name="LANE3_STATE" offset="3" width="1"/>
+		<field name="LANE2_STATE" offset="2" width="1"/>
+		<field name="LANE1_STATE" offset="1" width="1"/>
+		<field name="LANE0_STATE" offset="0" width="1"/>
+	</register>
+
+	<register name="SOR_SEQ_INST" offset="0x088" count="16">
+		<field name="PLL_PULLDOWN" offset="31" width="1"/>
+		<field name="POWERDOWN_MACRO" offset="30" width="1"/>
+		<field name="ASSERT_PLL_RESET" offset="29" width="1"/>
+		<field name="BLANK_V" offset="28" width="1"/>
+		<field name="BLANK_H" offset="27" width="1"/>
+		<field name="BLANK_DE" offset="26" width="1"/>
+		<field name="BLACK_DATA" offset="25" width="1"/>
+		<field name="TRISTATE_IOS" offset="24" width="1"/>
+		<field name="DRIVE_PWM_OUT_LO" offset="23" width="1"/>
+		<field name="PIN_B" offset="22" width="1"/>
+		<field name="PIN_A" offset="21" width="1"/>
+		<field name="SEQUENCE" offset="19" width="1"/>
+		<field name="LANE_SEQ" offset="18" width="1"/>
+		<field name="PDPORT" offset="17" width="1"/>
+		<field name="PDPLL" offset="16" width="1"/>
+		<field name="HALT" offset="15" width="1"/>
+		<field name="WAIT_UNITS" offset="12" width="2"/>
+		<field name="WAIT_TIME" offset="0" width="10"/>
+	</register>
+
+	<register name="SOR_XBAR_CTRL" offset="0x128">
 		<field name="LINK1_XSEL_4" offset="29" width="3"/>
 		<field name="LINK1_XSEL_3" offset="26" width="3"/>
 		<field name="LINK1_XSEL_2" offset="23" width="3"/>
@@ -16,7 +299,7 @@
 		<field name="BYPASS" offset="0" width="1"/>
 	</register>
 
-	<register name="SOR_XBAR_POL" offset="0x4b">
+	<register name="SOR_XBAR_POL" offset="0x12c">
 		<field name="POL_LINK1_4" offset="9" width="1"/>
 		<field name="POL_LINK1_3" offset="8" width="1"/>
 		<field name="POL_LINK1_2" offset="7" width="1"/>
@@ -27,5 +310,169 @@
 		<field name="POL_LINK0_2" offset="2" width="1"/>
 		<field name="POL_LINK0_1" offset="1" width="1"/>
 		<field name="POL_LINK0_0" offset="0" width="1"/>
+	</register>
+
+	<register name="SOR_DP_LINKCTL0" offset="0x130">
+		<field name="FORCE_IDLE_PATTERN" offset="31" width="1"/>
+		<field name="COMPLIANCE_PATTERN" offset="28" width="1"/>
+		<field name="LANE_COUNT" offset="16" width="5"/>
+		<field name="ENHANCED_FRAME" offset="14" width="1"/>
+		<field name="SYNC_MODE" offset="10" width="1"/>
+		<field name="TU_SIZE" offset="2" width="7"/>
+		<field name="ENABLE" offset="0" width="1"/>
+	</register>
+
+	<register name="SOR_DP_LINKCTL1" offset="0x134">
+		<field name="FORCE_IDLE_PATTERN" offset="31" width="1"/>
+		<field name="COMPLIANCE_PATTERN" offset="28" width="1"/>
+		<field name="LANE_COUNT" offset="16" width="5"/>
+		<field name="ENHANCED_FRAME" offset="14" width="1"/>
+		<field name="SYNC_MODE" offset="10" width="1"/>
+		<field name="TU_SIZE" offset="2" width="7"/>
+		<field name="ENABLE" offset="0" width="1"/>
+	</register>
+
+	<register name="SOR_LANE_DRIVE_CURRENT0" offset="0x138">
+		<field name="LANE3_DP_LANE3" offset="24" width="8"/>
+		<field name="LANE2_DP_LANE0" offset="16" width="8"/>
+		<field name="LANE1_DP_LANE1" offset="8" width="8"/>
+		<field name="LANE0_DP_LANE2" offset="0" width="8"/>
+	</register>
+
+	<register name="SOR_LANE_DRIVE_CURRENT1" offset="0x13c">
+		<field name="LANE3_DP_LANE3" offset="24" width="8"/>
+		<field name="LANE2_DP_LANE0" offset="16" width="8"/>
+		<field name="LANE1_DP_LANE1" offset="8" width="8"/>
+		<field name="LANE0_DP_LANE2" offset="0" width="8"/>
+	</register>
+
+	<register name="SOR_LANE4_DRIVE_CURRENT0" offset="0x140">
+		<field name="LANE4" offset="0" width="8"/>
+	</register>
+
+	<register name="SOR_LANE4_DRIVE_CURRENT1" offset="0x144">
+		<field name="LANE4" offset="0" width="8"/>
+	</register>
+
+	<register name="SOR_LANE_PREEMPHASIS0" offset="0x148">
+		<field name="LANE3_DP_LANE3" offset="24" width="8"/>
+		<field name="LANE2_DP_LANE0" offset="16" width="8"/>
+		<field name="LANE1_DP_LANE1" offset="8" width="8"/>
+		<field name="LANE0_DP_LANE2" offset="0" width="8"/>
+	</register>
+
+	<register name="SOR_LANE_PREEMPHASIS1" offset="0x14c">
+		<field name="LANE3_DP_LANE3" offset="24" width="8"/>
+		<field name="LANE2_DP_LANE0" offset="16" width="8"/>
+		<field name="LANE1_DP_LANE1" offset="8" width="8"/>
+		<field name="LANE0_DP_LANE2" offset="0" width="8"/>
+	</register>
+
+	<register name="SOR_LANE4_PREEMPHASIS0" offset="0x150">
+		<field name="LANE4" offset="0" width="8"/>
+	</register>
+
+	<register name="SOR_LANE4_PREEMPHASIS1" offset="0x154">
+		<field name="LANE4" offset="0" width="8"/>
+	</register>
+
+	<register name="SOR_LANE_POSTCURSOR0" offset="0x158">
+		<field name="LANE3_DP_LANE3" offset="24" width="8"/>
+		<field name="LANE2_DP_LANE0" offset="16" width="8"/>
+		<field name="LANE1_DP_LANE1" offset="8" width="8"/>
+		<field name="LANE0_DP_LANE2" offset="0" width="8"/>
+	</register>
+
+	<register name="SOR_LANE_POSTCURSOR1" offset="0x15c">
+		<field name="LANE3_DP_LANE3" offset="24" width="8"/>
+		<field name="LANE2_DP_LANE0" offset="16" width="8"/>
+		<field name="LANE1_DP_LANE1" offset="8" width="8"/>
+		<field name="LANE0_DP_LANE2" offset="0" width="8"/>
+	</register>
+
+	<register name="SOR_DP_CONFIG0" offset="0x160">
+		<field name="RD_RESET_VALUE" offset="31" width="1"/>
+		<field name="IDLE_BEFORE_ATTACH" offset="28" width="1"/>
+		<field name="ACTIVESYM_CNTL" offset="26" width="1"/>
+		<field name="ACTIVESYM_POLARITY" offset="24" width="1"/>
+		<field name="ACTIVESYM_FRAC" offset="16" width="4"/>
+		<field name="ACTIVESYM_COUNT" offset="8" width="7"/>
+		<field name="WATERMARK" offset="0" width="6"/>
+	</register>
+
+	<register name="SOR_DP_CONFIG1" offset="0x164">
+		<field name="RD_RESET_VALUE" offset="31" width="1"/>
+		<field name="IDLE_BEFORE_ATTACH" offset="28" width="1"/>
+		<field name="ACTIVESYM_CNTL" offset="26" width="1"/>
+		<field name="ACTIVESYM_POLARITY" offset="24" width="1"/>
+		<field name="ACTIVESYM_FRAC" offset="16" width="4"/>
+		<field name="ACTIVESYM_COUNT" offset="8" width="7"/>
+		<field name="WATERMARK" offset="0" width="6"/>
+	</register>
+
+	<register name="SOR_DP_PADCTL0" offset="0x170">
+		<field name="VCOLIMIT_DISABLE" offset="31" width="1"/>
+		<field name="VCOCALIB_TS0" offset="30" width="1"/>
+		<field name="VCOCALIB_OVERWRB" offset="29" width="1"/>
+		<field name="VCOCALIB_ENB" offset="28" width="1"/>
+		<field name="LOADADJ_BYPN" offset="27" width="1"/>
+		<field name="LOADADJ_SYNC_EN" offset="26" width="1"/>
+		<field name="VCOLIMIT_SEL" offset="25" width="1"/>
+		<field name="VCO_2X" offset="24" width="1"/>
+		<field name="PAD_CAL_PD" offset="23" width="1"/>
+		<field name="TX_PU" offset="22" width="1"/>
+		<field name="REG_CTRL" offset="20" width="2"/>
+		<field name="VCMMODE" offset="16" width="4"/>
+		<field name="TX_PU_VALUE" offset="8" width="8"/>
+		<field name="COMMON_MODE_TXD3_DP_TXD_3" offset="7" width="1"/>
+		<field name="COMMON_MODE_TXD2_DP_TXD_0" offset="6" width="1"/>
+		<field name="COMMON_MODE_TXD1_DP_TXD_1" offset="5" width="1"/>
+		<field name="COMMON_MODE_TXD0_DP_TXD_2" offset="4" width="1"/>
+		<field name="PD_TXD_3" offset="3" width="1"/>
+		<field name="PD_TXD_0" offset="2" width="1"/>
+		<field name="PD_TXD_1" offset="1" width="1"/>
+		<field name="PD_TXD_2" offset="0" width="1"/>
+	</register>
+
+	<register name="SOR_DP_DEBUG0" offset="0x178">
+		<field name="LANE3_FIFO_OVERFLOW" offset="16" width="1"/>
+		<field name="LANE2_FIFO_OVERFLOW" offset="15" width="1"/>
+		<field name="LANE1_FIFO_OVERFLOW" offset="14" width="1"/>
+		<field name="LANE0_FIFO_OVERFLOW" offset="13" width="1"/>
+		<field name="SPKT_OVERRUN" offset="12" width="1"/>
+		<field name="LANE3_STEER_ERROR" offset="11" width="1"/>
+		<field name="LANE2_STEER_ERROR" offset="10" width="1"/>
+		<field name="LANE1_STEER_ERROR" offset="9" width="1"/>
+		<field name="LANE0_STEER_ERROR" offset="8" width="1"/>
+		<field name="LANE3_PIXPACK_OVERFLOW" offset="7" width="1"/>
+		<field name="LANE2_PIXPACK_OVERFLOW" offset="6" width="1"/>
+		<field name="LANE1_PIXPACK_OVERFLOW" offset="5" width="1"/>
+		<field name="LANE0_PIXPACK_OVERFLOW" offset="4" width="1"/>
+		<field name="LANE3_FIFO_UNDERFLOW" offset="3" width="1"/>
+		<field name="LANE2_FIFO_UNDERFLOW" offset="2" width="1"/>
+		<field name="LANE1_FIFO_UNDERFLOW" offset="1" width="1"/>
+		<field name="LANE0_FIFO_UNDERFLOW" offset="0" width="1"/>
+	</register>
+
+	<register name="SOR_HDMI_CTRL" offset="0x300">
+		<field name="ENABLE" offset="30" width="1"/>
+		<field name="CA_SELECT" offset="28" width="1"/>
+		<field name="SS_SELECT" offset="27" width="1"/>
+		<field name="SF_SELECT" offset="26" width="1"/>
+		<field name="CC_SELECT" offset="25" width="1"/>
+		<field name="CT_SELECT" offset="24" width="1"/>
+		<field name="MAX_AC_PACKET" offset="16" width="5"/>
+		<field name="SAMPLE_FLAT" offset="12" width="1"/>
+		<field name="AUDIO_LAYOUT_SELECT" offset="10" width="1"/>
+		<field name="AUDIO_LAYOUT" offset="8" width="1"/>
+		<field name="REKEY" offset="0" width="7"/>
+	</register>
+
+	<register name="SOR_HDMI2_CTRL" offset="0x4f8">
+		<field name="SSCP_START" offset="16" width="16"/>
+		<field name="SSCP_LENGTH" offset="4" width="4"/>
+		<field name="SCRAMBLE_AT_LOADV" offset="2" width="1"/>
+		<field name="CLOCK_MODE" offset="1" width="1"/>
+		<field name="SCRAMBLE" offset="0" width="1"/>
 	</register>
 </module>

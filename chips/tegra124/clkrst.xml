@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module name="CLKRST" base="0x60006000">
+	<register name="PLLC_BASE" offset="0x080">
+		<field name="ENABLE" offset="30" width="1"/>
+		<field name="REF_DIS" offset="29" width="1"/>
+		<field name="LOCK_OVERRIDE" offset="28" width="1"/>
+		<field name="LOCK" offset="27" width="1"/>
+		<field name="DIVP" offset="20" width="4"/>
+		<field name="DIVN" offset="8" width="8"/>
+		<field name="DIVM" offset="0" width="8"/>
+	</register>
+
+	<register name="PLLC_MISC2" offset="0x088">
+		<field name="PTS" offset="28" width="2"/>
+		<field name="EN_FSTLCK" offset="27" width="1"/>
+		<field name="CLAMP_NDIV" offset="26" width="1"/>
+		<field name="EN_DYNRAMP" offset="25" width="1"/>
+		<field name="DYNRAMP_STEPA" offset="17" width="8"/>
+		<field name="DYNRAMP_STEPB" offset="9" width="8"/>
+		<field name="NDIV_NEW" offset="1" width="8"/>
+		<field name="DYNRAMP_DONE" offset="0" width="1"/>
+	</register>
+
+	<register name="PLLC_MISC" offset="0x08c">
+		<field name="OUT1_DIV_BYP" offset="30" width="1"/>
+		<field name="KCP" offset="28" width="2"/>
+		<field name="KVCO" offset="27" width="1"/>
+		<field name="IDDQ" offset="26" width="1"/>
+		<field name="FREQ_LOCK" offset="25" width="1"/>
+		<field name="LOCK_ENABLE" offset="24" width="1"/>
+		<field name="SETUP" offset="0" width="24"/>
+	</register>
+</module>
